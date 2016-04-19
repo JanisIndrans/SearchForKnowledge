@@ -1,32 +1,37 @@
-﻿
+﻿@model SearchForKnowledge.ViewModels.UsersIndex
 @{
     ViewBag.Title = "User";
+    
 }
+    @using (Html.BeginForm()) { 
 
 <h2>Sign up as a new user!</h2>
 
-<div class="form-group">
-    <label for="usr">Name:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
-</div>
-<div class="form-group">
-    <label for="school">School name:</label>
-    <input type="text" class="form-control" id="school">
-</div>
-<div class="form-group">
-    <label for="country">Country:</label>
-    <input type="text" class="form-control" id="country">
-</div>
-<div class="form-group">
-    <label for="city">City:</label>
-    <input type="text" class="form-control" id="city">
-</div>
-    <div class="form-group">
-        <input ="Submit" id="Padding" value="Sign up" class="btn btn-primary" />
-        <a href="Home">or cancel</a>
-    </div>
+@Html.AntiForgeryToken()
+@Html.ValidationSummary()
 
+<div class="form-group">
+    @Html.LabelFor(u => u.Username)
+    @Html.TextBoxFor(u => u.Username, new {@class = "form-control" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(u => u.Password)
+    @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(u => u.SchoolName)
+    @Html.TextBoxFor(u => u.SchoolName, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(u => u.Country)
+    @Html.TextBoxFor(u => u.Country, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(u => u.City)
+    @Html.TextBoxFor(u => u.City, new { @class = "form-control" })
+</div>
+
+        <input type="submit" value="Sign up" class="btn btn-primary" />
+        <a href="@Url.Action("Index")">or cancel</a>
+    }

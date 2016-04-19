@@ -8,5 +8,10 @@ namespace SearchForKnowledge.Controllers
         {
             return View();
         }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }
