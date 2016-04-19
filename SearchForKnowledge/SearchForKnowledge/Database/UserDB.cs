@@ -7,16 +7,10 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using SearchForKnowledge.Models;
 
-namespace ConsoleApplication1
+namespace SearchForKnowledge
 {
-    class Program
+    class UserDB
     {
-
-        static void Main(string[] args)
-        {
-
-        }
-
         public string getUserByName(string username)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
