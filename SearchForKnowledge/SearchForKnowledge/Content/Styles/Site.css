@@ -67,3 +67,8 @@
 #hyperlinkColorWhite {
     color: white;
 }
+
+#Padding {
+    padding: 5px;
+    line-break: normal;
+}
