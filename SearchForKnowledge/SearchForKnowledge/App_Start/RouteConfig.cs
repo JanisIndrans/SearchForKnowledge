@@ -14,6 +14,7 @@ namespace SearchForKnowledge
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("Home", "", new { controller = "First", action = "FirstView" });
+            routes.MapRoute("Register", "register", new { Controller = "Users", action = "Register" });
         }
     }
 }
