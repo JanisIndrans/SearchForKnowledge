@@ -1,0 +1,55 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/styles")
+    
+</head>
+<body>
+
+
+<header>
+
+</header>
+
+<div id="header" align="left">
+    <h3><a id="hyperlinkColorWhite" href="@Url.RouteUrl("Home")">Search For Knowledge</a></h3>
+</div>
+
+<div id="nav">
+    Left - 'nav'
+</div>
+
+<div id="section">
+    main - 'section'
+    @RenderBody()
+</div>
+    
+
+<div id="rightSideBar">
+    right side bar
+</div>
+
+
+
+<div id="footer">
+    &copy; @DateTime.UtcNow.Year - Janis Indrans, Viktor Meduneckij, Nikita Cimaskevic
+</div>
+
+
+    
+
+
+<footer>
+
+</footer>
+@Scripts.Render("~/scripts")
+@RenderSection("Scripts", false)
+
+ 
+
+</body>
+
+</html>
