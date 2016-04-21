@@ -13,10 +13,10 @@ namespace SearchForKnowledge
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Home", "", new { Controller = "First", action = "FirstView" });
+            routes.MapRoute("Home", "", new { Controller = "Posts", action = "Index" });
             routes.MapRoute("Register", "register", new { Controller = "Users", action = "Register" });
             routes.MapRoute("About", "about", new { Controller = "About", action = "About" });
-            routes.MapRoute("Login", "login", new { Controller = "Login", action = "Login" });
+            routes.MapRoute("Login", "login", new { Controller = "Users", action = "Login" });
         }
     }
 }

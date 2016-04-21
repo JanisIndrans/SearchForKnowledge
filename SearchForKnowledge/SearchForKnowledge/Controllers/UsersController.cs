@@ -13,15 +13,11 @@ namespace SearchForKnowledge.Controllers
     {
         //
         // GET: /Users/
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Register()
         {
 
-            return View(new UsersIndex { 
+            return View(new UsersNew
+            {
                 
             });
            
@@ -34,6 +30,27 @@ namespace SearchForKnowledge.Controllers
             UserDB db = new UserDB();
             db.addUser(form.Username, form.Password, form.SchoolName, form.Country, form.City);
             return RedirectToRoute("Home");
+        }
+
+        public ActionResult Login()
+        {
+            return View(new UsersLogin
+            {
+                
+            });
+        }
+
+        [HttpPost]
+        public ActionResult Login(UsersLogin form)
+        {
+            var user = new User();
+            UserDB db = new UserDB();
+            var result = db.loginUser(form.Username, form.Password);
+            if (result.Equals(1))
+            {
+                return RedirectToRoute("Home");
+            }
+            else return RedirectToRoute("Login");
         }
 	}
 }
