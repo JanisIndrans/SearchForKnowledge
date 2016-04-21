@@ -65,5 +65,28 @@ namespace SearchForKnowledge
             var result = coll.DeleteOne(filter);
         }
 
+        public int loginUser(string userName, string pass)
+        {
+            int result = 0;
+            
+            try
+            {
+                var mongoClient = new MongoClient("mongodb://localhost");
+                var database = mongoClient.GetDatabase("SearchForKnowledge");
+                var coll = database.GetCollection<BsonDocument>("Users");
+
+                var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
+                var results = coll.Find(filter).ToList().First();
+                if (results["password"] == pass)
+                {
+                    result = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = 0;
+            }
+            return result;
+        }
     }
 }

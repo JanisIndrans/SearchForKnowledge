@@ -52,3 +52,4 @@ C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchFor
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.dll
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Bson.xml
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.xml
+C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
