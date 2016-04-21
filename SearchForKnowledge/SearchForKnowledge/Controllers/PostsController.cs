@@ -2,16 +2,12 @@
 
 namespace SearchForKnowledge.Controllers
 {
-    public class FirstController : Controller
+    public class PostsController : Controller
     {
-        public ActionResult FirstView()
-        {
-            return View();
-        }
-
         public ActionResult Index()
         {
             return View();
         }
+
     }
 }

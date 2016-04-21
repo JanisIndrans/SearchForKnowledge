@@ -1,10 +1,12 @@
-﻿@model SearchForKnowledge.ViewModels.UsersIndex
+﻿@model SearchForKnowledge.ViewModels.UsersLogin
 @{
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm()) {
-
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
 <h2>Login</h2>
 
 <div class="form-group-sm">
