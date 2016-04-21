@@ -33,7 +33,7 @@ namespace SearchForKnowledge.Controllers
             var user= new User();
             UserDB db = new UserDB();
             db.addUser(form.Username, form.Password, form.SchoolName, form.Country, form.City);
-            return RedirectToAction("Index");
+            return RedirectToRoute("Home");
         }
 	}
 }

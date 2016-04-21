@@ -27,4 +27,10 @@ namespace SearchForKnowledge.ViewModels
         [Required, MaxLength(128)]
         public string City { get; set; }
     }
+    public class UsersLogin {
+        [Required, MaxLength(128)]
+        public string Username { get; set; }
+        [Required, DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
 }
