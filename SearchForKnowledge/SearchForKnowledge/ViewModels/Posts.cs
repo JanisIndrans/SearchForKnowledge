@@ -17,4 +17,19 @@ namespace SearchForKnowledge.ViewModels
     {
         public List<Post> Posts { get; set; }
     }
+    public class PostsNew
+    {
+        [Required, MaxLength(128)]
+        public string BookTitle { get; set; }
+        [Required, MaxLength(128)]
+        public string Author { get; set; }
+        [Required]
+        public string PicturePath { get; set; }
+        [Required]
+        public string UserId { get; set; }
+        [Required]
+        public string CategoryId { get; set; }
+        [Required]
+        public string Description { get; set; }
+    }
 }
