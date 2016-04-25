@@ -155,6 +155,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Database\PostDB.cs" />
     <Compile Include="Database\UserDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,7 +174,7 @@
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
-    <Content Include="Views\Shared\_HeaderBar.cshtml" />
+    <Content Include="Views\Posts\CreatePost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
