@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using SearchForKnowledge;
 
 namespace SearchForKnowledge.Controllers
@@ -43,14 +44,21 @@ namespace SearchForKnowledge.Controllers
         [HttpPost]
         public ActionResult Login(UsersLogin form)
         {
-            var user = new User();
-            UserDB db = new UserDB();
-            var result = db.loginUser(form.Username, form.Password);
-            if (result.Equals(1))
+            //UserDB db = new UserDB();
+            //var result = db.loginUser(form.Username, form.Password);
+            var result = "Janis";
+            if (!result.IsEmpty())
             {
+                Session["userName"] = result;
                 return RedirectToRoute("Home");
             }
-            else return RedirectToRoute("Login");
+            return RedirectToRoute("Login");
         }
-	}
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToRoute("Home");
+        }
+    }
 }
