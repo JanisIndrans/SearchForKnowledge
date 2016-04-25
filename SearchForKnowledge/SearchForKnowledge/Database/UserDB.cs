@@ -65,9 +65,9 @@ namespace SearchForKnowledge
             var result = coll.DeleteOne(filter);
         }
 
-        public int loginUser(string userName, string pass)
+        public string loginUser(string userName, string pass)
         {
-            int result = 0;
+            string result = "";
             
             try
             {
@@ -79,12 +79,12 @@ namespace SearchForKnowledge
                 var results = coll.Find(filter).ToList().First();
                 if (results["password"] == pass)
                 {
-                    result = 1;
+                    result = results["userName"].ToString();
                 }
             }
             catch (Exception ex)
             {
-                result = 0;
+                result = "";
             }
             return result;
         }

@@ -111,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Styles\images\brown_leather950x60.png" />
+    <Content Include="Content\Styles\images\img12.jpg" />
+    <Content Include="Content\Styles\images\img15.gif" />
+    <Content Include="Content\Styles\images\logo.png" />
+    <Content Include="Content\Styles\images\sidebar.png" />
+    <Content Include="Content\Styles\images\The-backside-of-a-very-old-book.jpg" />
     <Content Include="Content\Images\UCN_logo.gif" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\Site.css" />
@@ -127,7 +133,6 @@
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Forms.js" />
     <Content Include="Scripts\jquery-2.2.2.js" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
@@ -139,6 +144,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Logout.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Posts\Index.cshtml" />
@@ -153,8 +159,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Posts.cs" />
     <Compile Include="ViewModels\Users.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +173,7 @@
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Shared\_HeaderBar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

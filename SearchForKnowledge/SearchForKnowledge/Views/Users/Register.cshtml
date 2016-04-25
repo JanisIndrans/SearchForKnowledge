@@ -1,11 +1,12 @@
 ﻿@model SearchForKnowledge.ViewModels.UsersNew
 @{
     ViewBag.Title = "User";
-    
+
 }
+<h2>Sign up as a new user!</h2>
     @using (Html.BeginForm()) { 
 
-<h2>Sign up as a new user!</h2>
+
 
 @Html.AntiForgeryToken()
 @Html.ValidationSummary()

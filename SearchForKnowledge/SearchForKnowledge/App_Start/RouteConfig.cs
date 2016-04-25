@@ -17,6 +17,7 @@ namespace SearchForKnowledge
             routes.MapRoute("Register", "register", new { Controller = "Users", action = "Register" });
             routes.MapRoute("About", "about", new { Controller = "About", action = "About" });
             routes.MapRoute("Login", "login", new { Controller = "Users", action = "Login" });
+            routes.MapRoute("Logout", "logout", new {controller = "Users", action = "Logout"});
         }
     }
 }

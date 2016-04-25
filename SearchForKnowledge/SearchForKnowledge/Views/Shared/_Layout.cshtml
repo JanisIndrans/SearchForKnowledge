@@ -1,63 +1,103 @@
-﻿@using System.Web.Optimization
+﻿
+@using System.Web.Optimization
 <!DOCTYPE html>
 <html>
 <head>
 
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/styles")
-    
+
 </head>
 <body>
-
-
-<header>
-
-</header>
-
-<div id="header" align="left">
-    <h3><a id="hyperlinkColorWhite" href="@Url.RouteUrl("Home")">Search For Knowledge</a></h3>
-    <div class="btn" id="RegisterBut">
-        <a id="hyperlinkColorWhite" href="@Url.RouteUrl("Register")">Register</a>
+    <!-- start header -->
+<div id="header">
+    <div id="logo">
+        <a href="@Url.RouteUrl("Home")">
+            <img src="~/Content/Styles/images/logo.png"/>
+        </a>
     </div>
-    <div class="btn" id="LoginBut">
-        <a id="hyperlinkColorWhite" href="@Url.RouteUrl("Login")">Login</a>
+
+    <div id="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search in posts ...">
+            <span class="input-group-btn">
+                        <a href="#" id="searchColour" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></a>
+                    </span>
+        </div>
     </div>
-    <div class="btn" id="AboutBut">
-        <a href="@Url.RouteUrl("About")">About</a>
+</div>
+
+<div id="greeting">
+    @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
+    {
+        <div class="pull-right">Welcome back @Session["userName"].ToString()!</div>
+    }
+</div>
+  
+    <!-- end header -->
+    <!-- star menu -->
+    <div id="menu">
+        <ul>
+            <li><a href="@Url.RouteUrl("Home")">Home</a></li>
+            <li><a href="@Url.RouteUrl("Register")">Register</a></li>
+            
+            <li><a href="@Url.RouteUrl("Login")">Login</a></li>
+            <li><a href="@Url.RouteUrl("About")">About</a></li>
+
+            <li class="pull-right">
+                @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
+                {
+                    <a href="@Url.RouteUrl("Logout")" data-post="Are you sure you want to Logout?">Logout</a>
+                }
+            </li>
+        </ul>
     </div>
-</div>
-
-<div id="nav">
-    Left - 'nav'
-</div>
-
-<div id="section">
-    main - 'section'
-    @RenderBody()
-</div>
-    
-
-<div id="rightSideBar">
-    right side bar
-</div>
 
 
 
-<div id="footer">
-    &copy; @DateTime.UtcNow.Year - Janis Indrans, Viktor Meduneckij, Nikita Cimaskevic
-</div>
 
 
-    
+    <div id="page">
+        <div id="content">
+            @RenderBody()
+        </div>
+        <div id="sidebar">
+            <div id="sidebarContent">
+                <div>
+                    <a href="#">Programming</a>
+                </div>
+                <div>
+                    <a href="#">Design</a>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            &copy; @DateTime.UtcNow.Year - Janis Indrans, Viktor Meduneckij, Nikita Cimaskevic
+        </div>
+    </div>
 
 
-<footer>
+        @*<div id="rightSideBar">
+            
 
-</footer>
-@Scripts.Render("~/scripts")
-@RenderSection("Scripts", false)
 
- 
+
+
+
+        </div>*@
+
+
+
+
+
+
+
+
+
+        <footer></footer>
+        @Scripts.Render("~/scripts")
+        @RenderSection("Scripts", false)
+
 
 </body>
 
