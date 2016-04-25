@@ -1,0 +1,44 @@
+﻿@model SearchForKnowledge.ViewModels.PostsNew
+@{
+    ViewBag.Title = "CreatePost";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <h2>Create your post</h2>
+
+    <div class="form-group-sm">
+        @Html.LabelFor(u => u.BookTitle)
+        @Html.TextBoxFor(u => u.BookTitle, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group-sm">
+        @Html.LabelFor(u => u.Author)
+        @Html.TextBoxFor(u => u.Author, new { @class = "form-control" })
+    </div>
+    
+    <div class="form-group-sm">
+        @Html.LabelFor(u => u.PicturePath)
+        @Html.TextBoxFor(u => u.PicturePath, new { @class = "form-control" })
+    </div>
+    <div class="form-group-sm">
+        @Html.LabelFor(u => u.UserId)
+        @Html.TextBoxFor(u => u.UserId, new { @class = "form-control" })
+    </div>
+    <div class="form-group-sm">
+        @Html.LabelFor(u => u.CategoryId)
+        @Html.TextBoxFor(u => u.CategoryId, new { @class = "form-control" })
+    </div>
+    <div class="form-group-sm">
+        @Html.LabelFor(u => u.Description)
+        @Html.TextBoxFor(u => u.Description, new { @class = "form-control" })
+    </div>
+
+
+    <input type="submit" value="Create!" class="btn btn-primary" />
+    <a href="@Url.RouteUrl("Home")">or cancel</a>
+
+}
