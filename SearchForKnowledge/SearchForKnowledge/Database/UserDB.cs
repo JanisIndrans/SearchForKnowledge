@@ -21,15 +21,16 @@ namespace SearchForKnowledge
             return filter.ToString();
         }
 
-        public void updateUser(string userName, string schoolName, string country, string city)
+        public void updateUser(string userName, string password, string schoolName, string country, string city)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("username", userName);
+            var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
             var update = Builders<BsonDocument>.Update
                 .Set("userName", userName)
+                .Set("password",password)
                 .Set("schoolName", schoolName)
                 .Set("country", country)
                 .Set("city", city);
@@ -77,7 +78,7 @@ namespace SearchForKnowledge
 
                 var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
                 var results = coll.Find(filter).ToList().First();
-                if (results["password"] == pass)
+                if (BCrypt.Net.BCrypt.Verify(pass, results["password"].ToString()))
                 {
                     result = results["userName"].ToString();
                 }
@@ -87,6 +88,15 @@ namespace SearchForKnowledge
                 result = "";
             }
             return result;
+        }
+        public string getPassword(string username) {
+            var mongoClient = new MongoClient("mongodb://localhost");
+            var database = mongoClient.GetDatabase("SearchForKnowledge");
+            var coll = database.GetCollection<BsonDocument>("Users");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
+            var results = coll.Find(filter).ToList().First();
+            return results["password"].ToString();
         }
     }
 }

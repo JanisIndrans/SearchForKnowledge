@@ -114,13 +114,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\UCN_logo.png" />
     <Content Include="Content\Styles\images\brown_leather950x60.png" />
     <Content Include="Content\Styles\images\img12.jpg" />
     <Content Include="Content\Styles\images\img15.gif" />
     <Content Include="Content\Styles\images\logo.png" />
     <Content Include="Content\Styles\images\sidebar.png" />
     <Content Include="Content\Styles\images\The-backside-of-a-very-old-book.jpg" />
-    <Content Include="Content\Images\UCN_logo.gif" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -180,6 +180,7 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Posts\CreatePost.cshtml" />
     <Content Include="Views\Users\ShowHash.cshtml" />
+    <Content Include="Views\Users\AdminPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
