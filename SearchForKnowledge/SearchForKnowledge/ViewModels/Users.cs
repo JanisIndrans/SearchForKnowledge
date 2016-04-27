@@ -34,4 +34,9 @@ namespace SearchForKnowledge.ViewModels
         [Required, DataType(DataType.Password)]
         public string Password { get; set; }
     }
+
+    public class UsersShowHash
+    {
+        public string Hash { get; set; }
+    }
 }

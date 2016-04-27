@@ -19,7 +19,6 @@ namespace SearchForKnowledge.Controllers
 
             return View(new UsersNew
             {
-                
             });
            
         }
@@ -27,10 +26,16 @@ namespace SearchForKnowledge.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Register(UsersNew form)
         {
-            var user= new User();
-            UserDB db = new UserDB();
-            db.addUser(form.Username, form.Password, form.SchoolName, form.Country, form.City);
-            return RedirectToRoute("Home");
+            User user = new User();
+            user.SetPassword(form.Password);
+            string hash = user.Password;
+            return View(new UsersNew
+            {
+                Password = hash
+            });
+            //UserDB db = new UserDB();
+            //db.addUser(form.Username, form.Password, form.SchoolName, form.Country, form.City);
+            //return RedirectToRoute("Home");
         }
 
         public ActionResult Login()
@@ -46,10 +51,13 @@ namespace SearchForKnowledge.Controllers
         {
             //UserDB db = new UserDB();
             //var result = db.loginUser(form.Username, form.Password);
-            var result = "Janis";
-            if (!result.IsEmpty())
+            User user = new User();
+            user.Password = "$2a$13$jsfLkGh8K8RyAMobTpaakOYgMi0XcHdOjsjqFSFwcJRh3T53YxCzm";
+            user.Username = "Janis";
+
+            if (!user.Username.IsEmpty() && user.CheckPassword(form.Password))
             {
-                Session["userName"] = result;
+                Session["userName"] = user.Username;
                 return RedirectToRoute("Home");
             }
             return RedirectToRoute("Login");
