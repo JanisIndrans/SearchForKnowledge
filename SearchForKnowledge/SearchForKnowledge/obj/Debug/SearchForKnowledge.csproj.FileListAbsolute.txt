@@ -52,7 +52,6 @@ C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchFor
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.dll
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Bson.xml
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.xml
-C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\SearchForKnowledge.dll.config
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\SearchForKnowledge.dll
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\SearchForKnowledge.pdb
@@ -86,3 +85,7 @@ C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledg
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.dll
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.pdb
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.xml
+C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.dll
+C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.pdb
+C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.xml
+C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache

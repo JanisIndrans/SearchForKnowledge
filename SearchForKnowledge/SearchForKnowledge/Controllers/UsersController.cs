@@ -29,13 +29,14 @@ namespace SearchForKnowledge.Controllers
             User user = new User();
             user.SetPassword(form.Password);
             string hash = user.Password;
+            UserDB db = new UserDB();
+            db.addUser(form.Username, hash, form.SchoolName, form.Country, form.City);
+            //return RedirectToRoute("Home");
             return View(new UsersNew
             {
-                Password = hash
+                
             });
-            //UserDB db = new UserDB();
-            //db.addUser(form.Username, form.Password, form.SchoolName, form.Country, form.City);
-            //return RedirectToRoute("Home");
+            
         }
 
         public ActionResult Login()
@@ -49,16 +50,16 @@ namespace SearchForKnowledge.Controllers
         [HttpPost]
         public ActionResult Login(UsersLogin form)
         {
-            //UserDB db = new UserDB();
-            //var result = db.loginUser(form.Username, form.Password);
-            User user = new User();
-            user.Password = "$2a$13$jsfLkGh8K8RyAMobTpaakOYgMi0XcHdOjsjqFSFwcJRh3T53YxCzm";
-            user.Username = "Janis";
+            UserDB udb = new UserDB();
 
-            if (!user.Username.IsEmpty() && user.CheckPassword(form.Password))
+            if (!form.Username.IsEmpty())
             {
-                Session["userName"] = user.Username;
-                return RedirectToRoute("Home");
+                string passwordHash = udb.getPassword(form.Username);
+                string password = form.Password;
+                if (BCrypt.Net.BCrypt.Verify(password, passwordHash)) {
+                    Session["username"] = form.Username;
+                    RedirectToRoute("Home");
+                }
             }
             return RedirectToRoute("Login");
         }
@@ -67,6 +68,29 @@ namespace SearchForKnowledge.Controllers
         {
             Session.Clear();
             return RedirectToRoute("Home");
+        }
+        
+        public ActionResult AdminPage()
+        {
+            return View(new AdminPage { });
+        }
+
+        [HttpPost]
+        public ActionResult AdminPage(AdminPage ap)
+        {
+            if (Session["userName"].Equals("Viktor") || Session["userName"].Equals("Janis"))
+            {
+                UserDB udb = new UserDB();
+                udb.updateUser(ap.Username, ap.SchoolName, ap.Country, ap.City);
+                RedirectToRoute("Home");
+            }
+            else RedirectToRoute("Home");
+            
+
+
+            return View(new AdminPage { 
+               
+            });
         }
     }
 }

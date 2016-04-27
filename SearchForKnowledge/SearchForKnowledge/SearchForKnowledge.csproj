@@ -180,6 +180,7 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Posts\CreatePost.cshtml" />
     <Content Include="Views\Users\ShowHash.cshtml" />
+    <Content Include="Views\Users\AdminPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
