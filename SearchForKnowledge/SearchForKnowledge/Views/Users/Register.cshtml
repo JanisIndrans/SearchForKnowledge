@@ -3,36 +3,45 @@
     ViewBag.Title = "User";
 
 }
-<h2>Sign up as a new user!</h2>
-    @using (Html.BeginForm()) { 
+
+@using (Html.BeginForm()) {
 
 
 
-@Html.AntiForgeryToken()
-@Html.ValidationSummary()
+    @Html.AntiForgeryToken()
 
-<div class="form-group">
-    @Html.LabelFor(u => u.Username)
-    @Html.TextBoxFor(u => u.Username, new {@class = "form-control" })
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h2>Sign up as a new user!</h2>
+            </div>
+        </div>
+        <div class="panel-body">
+            @Html.ValidationSummary()
+            <div class="form-group-sm">
+                @Html.LabelFor(u => u.Username)
+                @Html.TextBoxFor(u => u.Username, new { @class = "form-control" })
 
-</div>
-<div class="form-group">
-    @Html.LabelFor(u => u.Password)
-    @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
-</div>
-<div class="form-group">
-    @Html.LabelFor(u => u.SchoolName)
-    @Html.TextBoxFor(u => u.SchoolName, new { @class = "form-control" })
-</div>
-<div class="form-group">
-    @Html.LabelFor(u => u.Country)
-    @Html.TextBoxFor(u => u.Country, new { @class = "form-control" })
-</div>
-<div class="form-group">
-    @Html.LabelFor(u => u.City)
-    @Html.TextBoxFor(u => u.City, new { @class = "form-control" })
-</div>
+            </div>
+            <div class="form-group-sm">
+                @Html.LabelFor(u => u.Password)
+                @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group-sm">
+                @Html.LabelFor(u => u.SchoolName)
+                @Html.TextBoxFor(u => u.SchoolName, new { @class = "form-control" })
+            </div>
+            <div class="form-group-sm">
+                @Html.LabelFor(u => u.Country)
+                @Html.TextBoxFor(u => u.Country, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.City)
+                @Html.TextBoxFor(u => u.City, new { @class = "form-control" })
+            </div>
 
-        <input type="submit" value="Sign up" class="btn btn-primary" />
-        <a href="#">or cancel</a>
-    }
+            <input type="submit" value="Sign up" class="btn btn-primary" />
+            <a href="#">or cancel</a>
+        </div>
+    </div>
+}
