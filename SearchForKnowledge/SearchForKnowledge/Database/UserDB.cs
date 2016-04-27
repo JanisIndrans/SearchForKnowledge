@@ -21,7 +21,7 @@ namespace SearchForKnowledge
             return filter.ToString();
         }
 
-        public void updateUser(string userName, string schoolName, string country, string city)
+        public void updateUser(string userName, string password, string schoolName, string country, string city)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
@@ -30,6 +30,7 @@ namespace SearchForKnowledge
             var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
             var update = Builders<BsonDocument>.Update
                 .Set("userName", userName)
+                .Set("password",password)
                 .Set("schoolName", schoolName)
                 .Set("country", country)
                 .Set("city", city);

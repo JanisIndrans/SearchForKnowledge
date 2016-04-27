@@ -32,10 +32,7 @@ namespace SearchForKnowledge.Controllers
             UserDB db = new UserDB();
             db.addUser(form.Username, hash, form.SchoolName, form.Country, form.City);
             //return RedirectToRoute("Home");
-            return View(new UsersNew
-            {
-                
-            });
+            return RedirectToRoute("Home");
             
         }
 
@@ -57,8 +54,8 @@ namespace SearchForKnowledge.Controllers
                 string passwordHash = udb.getPassword(form.Username);
                 string password = form.Password;
                 if (BCrypt.Net.BCrypt.Verify(password, passwordHash)) {
-                    Session["username"] = form.Username;
-                    RedirectToRoute("Home");
+                    Session["userName"] = form.Username;
+                    return RedirectToRoute("Home");
                 }
             }
             return RedirectToRoute("Login");
@@ -81,16 +78,13 @@ namespace SearchForKnowledge.Controllers
             if (Session["userName"].Equals("Viktor") || Session["userName"].Equals("Janis"))
             {
                 UserDB udb = new UserDB();
-                udb.updateUser(ap.Username, ap.SchoolName, ap.Country, ap.City);
-                RedirectToRoute("Home");
+                string hash = ap.Password;
+                udb.updateUser(ap.Username, BCrypt.Net.BCrypt.HashPassword(hash), ap.SchoolName, ap.Country, ap.City);
+                return RedirectToRoute("Home");
             }
-            else RedirectToRoute("Home");
-            
+            return RedirectToRoute("Home");
 
-
-            return View(new AdminPage { 
-               
-            });
         }
+
     }
 }
