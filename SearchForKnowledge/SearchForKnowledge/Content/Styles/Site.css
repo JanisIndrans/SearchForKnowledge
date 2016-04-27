@@ -31,7 +31,6 @@ body {
 #menu a {
 	display: block;
 	float: left;
-	/*background: url(images/img15.gif) no-repeat right 100%;*/
 	padding: 18px 30px 0 30px;
 	text-decoration: none;
 	font-family: Arial, Helvetica, sans-serif;
@@ -76,21 +75,13 @@ body {
 }
 .panel {
     background-color: transparent;
+    border: 0;
 }
 
 #text {
     word-break: break-all; 
     word-wrap: break-word;
 }
-
-/*#section {
-    width:70%;
-    float:left;
-    padding:10px;
-    width: 890px;
-	margin: 0 auto;
-	padding: 30px 0;	 	 
-}*/
 #content {
 	float: right;
 	width: 640px;
@@ -134,7 +125,6 @@ body {
 }
 
 #contentPicture {
-    /*line-height:30px;*/
     background-color:#eeeeee;
     height: 150px;
     width:100px;
@@ -171,27 +161,41 @@ body {
 
 #searchColour {
     background: #000000 url(images/sidebar.png) repeat top left;
-    outline: none;
+    border: 0;
 }
 
-
-/*--------------unsorted yet--------------------*/
-
-
-
-
-
-
-
-
-
-#Padding {
-    padding: 5px;
-    line-break: normal;
+#adminPagePanel .panel-heading {
+    color: white;
+    text-align: center;
 }
+
+/*--------------------Validator-------------------------*/
+
+.field-validation-error {
+    color: red;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid red;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: red;
+}
+/*--------------------Validator-------------------------*/
+
+
+/*--------------------About picture-------------------------*/
 #center-block {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+/*--------------------About picture-------------------------*/
 

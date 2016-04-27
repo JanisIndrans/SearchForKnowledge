@@ -115,6 +115,7 @@
   <ItemGroup>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\UCN_logo.png" />
+    <Content Include="Content\Images\UCN_logo1.png" />
     <Content Include="Content\Styles\images\brown_leather950x60.png" />
     <Content Include="Content\Styles\images\img12.jpg" />
     <Content Include="Content\Styles\images\img15.gif" />

@@ -16,7 +16,10 @@ namespace SearchForKnowledge
                 .Include("~/scripts/jquery.validate.js")
                 .Include("~/scripts/jquery.validate.unobtrusive.js")
                 .Include("~/scripts/bootstrap.js")
-                .Include("~/scripts/Logout.js"));
+                .Include("~/scripts/Logout.js")
+                .Include("~/scripts/bootstrap.min.js")
+                .Include("~/scripts/jquery-2.2.2.min.js")
+                .Include("~/scripts/jquery-2.2.3.min.js"));
         }
     }
 }
