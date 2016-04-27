@@ -1,5 +1,4 @@
-﻿@using SearchForKnowledge.Models
-@model SearchForKnowledge.ViewModels.PostsShowAll
+﻿@model SearchForKnowledge.ViewModels.PostsShowAll
 @{
     ViewBag.Title = "Index";
 }
@@ -7,30 +6,6 @@
     <h2>
         Recently Added
     </h2>
-    @*<div class="panel panel-primary" id="text">
-        <div class="panel-heading" style="height: 40px">
-            <span>
-                <a href="#" style="color: white" class="pull-left">@Model.Post.BookTitle</a>
-                <a href="#" style="color: white" class="pull-right">@Model.Post.CategoryId</a>
-            </span>
-        </div>
-        <div class="panel-body" data-toggle="collapse">
-            <div id="contentPicture"></div>
-            <div class="panel pre-scrollable" id="contentDescription">
-                Description: @Model.Post.Description
-                Category: @Model.Post.CategoryId
-            </div>
-            <div id="contentFooter">
-                <a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> 7</a> |
-                <a href="#"><i class="glyphicon glyphicon-thumbs-down"></i> 3</a> |
-                <a href="#">Comments: 0</a>
-            </div>
-        </div>
-
-    </div>*@
-
-
-    @*experiment--------------------------------------*@
 
     <div class="panel-group" id="accordion">
 
@@ -80,78 +55,8 @@
             
         }
 
-
-                @* <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
-                    </h4>
-                </div>
-
-
-                <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-            </div>
-
-            <div id="collapse_@x" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div id="contentPicture"></div>
-                                <div class="panel pre-scrollable" id="contentDescription">
-                                    Description: @Model.Posts.ElementAt(x)..Description
-                                </div>
-                                <div id="contentFooter">
-                                    <a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> 7</a> |
-                                    <a href="#"><i class="glyphicon glyphicon-thumbs-down"></i> 3</a> |
-                                    <a href="#">Comments: 0</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
-                    </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-@*<div class="container">
-    <div class="btn btn-info btn-lg">
-        <a href="#">
-            <i class="glyphicon glyphicon-cloud-upload"></i> I believe I can Fly! :D
-        </a>
-    </div>
-</div>
-
-<div class="container">
-    <div class="btn bg-danger btn-xs">
-        <a href="#">
-            <i class="glyphicon glyphicon-gift"></i> Heres your gift!
-        </a>
-    </div>
-</div>
-
-<div class="panel-body">
-    
-</div>*@
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>*@
+@*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@

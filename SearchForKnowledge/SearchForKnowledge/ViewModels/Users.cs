@@ -41,15 +41,19 @@ namespace SearchForKnowledge.ViewModels
     }
 
     public class AdminPage {
-        [MaxLength(128)]
+        [Required, MaxLength(128)]
         public string Username { get; set; }
-        [DataType(DataType.Password)]
+
+        [Required, DataType(DataType.Password)]
         public string Password { get; set; }
-        [ MaxLength(128)]
+
+        [Required, MaxLength(128)]
         public string SchoolName { get; set; }
-        [MaxLength(128)]
+
+        [Required, MaxLength(128)]
         public string Country { get; set; }
-        [MaxLength(128)]
+
+        [Required, MaxLength(128)]
         public string City { get; set; }
     }
 }
