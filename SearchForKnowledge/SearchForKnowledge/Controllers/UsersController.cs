@@ -74,16 +74,11 @@ namespace SearchForKnowledge.Controllers
 
         [HttpPost]
         public ActionResult AdminPage(AdminPage ap)
-        {
-            if (Session["userName"].Equals("Viktor") || Session["userName"].Equals("Janis"))
-            {
+        {        
                 UserDB udb = new UserDB();
                 string hash = ap.Password;
                 udb.updateUser(ap.Username, BCrypt.Net.BCrypt.HashPassword(hash), ap.SchoolName, ap.Country, ap.City);
                 return RedirectToRoute("Home");
-            }
-            return RedirectToRoute("Home");
-
         }
 
     }
