@@ -24,7 +24,9 @@
                         <div  id="collapse_@x" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div id="contentPicture">
-                                    <img src="@Model.Posts.ElementAt(x)"/>
+                                    <div id="Zoom">
+                                        <img class="img-responsive" src="@Model.Posts.ElementAt(x).PicturePath"/>                                        
+                                    </div>
                                 </div>
                                 <div class="panel pre-scrollable" id="contentDescription">
                                     Description: @Model.Posts.ElementAt(x)..Description
@@ -42,8 +44,11 @@
                         <div id="collapse_@x" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div id="contentPicture">
-                                    <img src="@Model.Posts.ElementAt(x).PicturePath"/>
+                                    <div id="Zoom">
+                                        <img class="img-responsive" src="@Model.Posts.ElementAt(x).PicturePath"/>
+                                    </div>
                                 </div>
+
                                 <div class="panel pre-scrollable" id="contentDescription">
                                     Description: @Model.Posts.ElementAt(x)..Description
                                 </div>

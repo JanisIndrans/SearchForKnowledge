@@ -25,7 +25,7 @@ namespace SearchForKnowledge.ViewModels
         [Required, MaxLength(128)]
         public string Author { get; set; }
         [Required]
-        public HttpPostedFileBase PicturePath { get; set; }
+        public HttpPostedFileBase ImgFile { get; set; }
         [Required]
         public string UserId { get; set; }
         [Required]

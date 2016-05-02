@@ -16,14 +16,6 @@ namespace SearchForKnowledge.Controllers
             PostDB db =new PostDB();
             List<Post> posts = db.getAllPosts();
 
-
-           //Post p = new Post("HarryPotter","JK","picpath",120,1,"description");
-           //Post p1 = new Post(103, "Nikita", "/12/34v/ghaf/", 33, 2, "Some book about something");
-           //Post p2 = new Post(103, "Viktor", "/12/34v/ghaf/", 33, 3, "Some book about something");
-           //posts.Add(p);
-          // posts.Add(p1);
-          // posts.Add(p2);
-
             return View(new PostsShowAll
             {
                 Posts = posts
@@ -42,15 +34,14 @@ namespace SearchForKnowledge.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult CreatePost(PostsNew form)
         {
-            //var post = new Post();
             PostDB db = new PostDB();
             string imgPath = "";
-            if (form.PicturePath != null)
+            if (form.ImgFile != null)
             {
                 string pathToSave = Server.MapPath("~/Content/Images/UserImages/");
-                string filename = Path.GetFileName(form.PicturePath.FileName);
-                form.PicturePath.SaveAs(Path.Combine(pathToSave, filename));
-                imgPath = "/content/images/UserImages/" + filename;
+                string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(form.ImgFile.FileName);
+                form.ImgFile.SaveAs(Path.Combine(pathToSave, newFileName));
+                imgPath = "/content/images/UserImages/" + newFileName;
             }
 
 
