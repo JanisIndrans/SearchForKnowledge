@@ -16,6 +16,7 @@ body {
 	height: 60px;
 	margin: 0 auto;
 	background: #6AA2FD url(images/brown_leather950x60.png);
+    border-radius: 10px;
 }
 #menu ul {
 	margin: 0;
@@ -40,7 +41,7 @@ body {
 }
 #menu a:hover {
 
-    color: red;
+    color: blue;
 
 }
 #search {
@@ -98,6 +99,8 @@ body {
     background: #000000 url(images/sidebar.png) repeat top left;
     padding-right: 5px;
     color: white;
+    border-radius: 10px;
+
 }
 #sidebarContent {
     padding: 20px;

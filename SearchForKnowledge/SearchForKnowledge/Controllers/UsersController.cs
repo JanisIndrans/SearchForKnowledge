@@ -30,7 +30,7 @@ namespace SearchForKnowledge.Controllers
             user.SetPassword(form.Password);
             string hash = user.Password;
             UserDB db = new UserDB();
-            db.addUser(form.Username, hash, form.SchoolName, form.Country, form.City);
+            db.addUser(form.Username, hash, form.SchoolName, form.Country, form.City, form.Type);
             //return RedirectToRoute("Home");
             return RedirectToRoute("Home");
             
@@ -69,21 +69,26 @@ namespace SearchForKnowledge.Controllers
         
         public ActionResult AdminPage()
         {
-            return View(new AdminPage { });
+            UserDB udb = new UserDB();
+            if (udb.getType(Session["userName"].ToString()) == "Admin")
+            {
+                return View(new AdminPage { });
+            }
+            else
+            {
+                
+                return RedirectToRoute("Home");
+            }
         }
 
         [HttpPost]
         public ActionResult AdminPage(AdminPage ap)
-        {
-            if (Session["userName"].Equals("Viktor") || Session["userName"].Equals("Janis"))
-            {
+        {        
                 UserDB udb = new UserDB();
                 string hash = ap.Password;
+
                 udb.updateUser(ap.Username, BCrypt.Net.BCrypt.HashPassword(hash), ap.SchoolName, ap.Country, ap.City);
                 return RedirectToRoute("Home");
-            }
-            return RedirectToRoute("Home");
-
         }
 
     }

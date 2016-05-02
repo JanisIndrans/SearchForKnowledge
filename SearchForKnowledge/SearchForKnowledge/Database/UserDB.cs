@@ -39,7 +39,7 @@ namespace SearchForKnowledge
             var result = coll.UpdateOne(filter, update);
         }
 
-        public void addUser(string userName, string password, string schoolName, string country, string city)
+        public void addUser(string userName, string password, string schoolName, string country, string city, string type)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
@@ -51,7 +51,8 @@ namespace SearchForKnowledge
                     {"password",password},
                     {"schoolName",schoolName},
                     {"country",country},
-                    {"city",city}
+                    {"city",city},
+                    {"type", type}
                 };
             coll.InsertOne(document);
         }
@@ -97,6 +98,15 @@ namespace SearchForKnowledge
             var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
             var results = coll.Find(filter).ToList().First();
             return results["password"].ToString();
+        }
+        public string getType(string username) {
+            var mongoClient = new MongoClient("mongodb://localhost");
+            var database = mongoClient.GetDatabase("SearchForKnowledge");
+            var coll = database.GetCollection<BsonDocument>("Users");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
+            var results = coll.Find(filter).ToList().First();
+            return results["type"].ToString();
         }
     }
 }
