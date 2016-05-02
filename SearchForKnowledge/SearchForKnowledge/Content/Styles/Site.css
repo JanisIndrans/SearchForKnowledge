@@ -71,13 +71,13 @@ body {
 }
 
 .panel-heading {
-    background-color:transparent;
+    background-color: transparent;
 }
 
 .panel-title {
     color: #191919;
     font-size: 20px;
-    background-color: transparent
+    background-color: transparent;
 
 }
 
@@ -86,6 +86,7 @@ body {
 }
 .panel {
     background-color: transparent;
+    color:white;
     border: 0;
 }
 
@@ -275,7 +276,7 @@ body {
 }
 
 .accordion {
-    background-color: rgba(25, 25, 25, 0.68);
+    background-color: #191919;
     border-radius:10px;
 }
 
