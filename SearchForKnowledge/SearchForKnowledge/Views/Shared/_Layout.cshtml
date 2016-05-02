@@ -75,25 +75,32 @@
 
 
 
-    <div id="page">
-        <div id="content">
-            @RenderBody()
-        </div>
-        <div id="sidebar">
-            <div id="sidebarContent">
-                <div>
-                    <a href="#">Programming</a>
-                </div>
-                <div>
-                    <a href="#">Design</a>
-                </div>
+<div id="page">
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="sidebar">
+        <div id="sidebarContent">
+            <div>
+                <a href="#">Programming</a>
+            </div>
+            <div>
+                <a href="#">Design</a>
             </div>
         </div>
-        <div id="footer">
-            &copy; @DateTime.UtcNow.Year - Janis Indrans, Viktor Meduneckij, Nikita Cimaskevic
-        </div>
     </div>
+    <div id="footer">
+        &copy; @DateTime.UtcNow.Year - Janis Indrans, Viktor Meduneckij, Nikita Cimaskevic
+    </div>
+</div>
+    @* ImgZoom Begins ---------------------------------------------- *@
+    <div class="overlay"></div>
+<div align="center">
+    <p id="ZoomImageLarge"></p>
 
+    <div id="ZoomImageLarge"></div>
+</div>
+    @* ImgZoom Ends ------------------------------------------------ *@
 
         @*<div id="rightSideBar">
             

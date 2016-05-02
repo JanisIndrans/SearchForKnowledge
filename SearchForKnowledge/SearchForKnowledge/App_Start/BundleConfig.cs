@@ -19,7 +19,8 @@ namespace SearchForKnowledge
                 .Include("~/scripts/Logout.js")
                 .Include("~/scripts/bootstrap.min.js")
                 .Include("~/scripts/jquery-2.2.2.min.js")
-                .Include("~/scripts/jquery-2.2.3.min.js"));
+                .Include("~/scripts/jquery-2.2.3.min.js")
+                .Include("~/scripts/ImgZoom.js"));
         }
     }
 }

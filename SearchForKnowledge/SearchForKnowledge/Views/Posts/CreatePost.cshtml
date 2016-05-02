@@ -40,13 +40,8 @@
             </div>
 
             <div class="input-group">
-                @Html.TextBoxFor(u => u.PicturePath, new { type = "file" })
+                @Html.TextBoxFor(u => u.ImgFile, new { type = "file" })
             </div>
-
-            @*<div class="input-group">
-                <span class="input-group-btn btn-file">Browse</span>
-                <input type="file">
-            </div>*@
 
             <input type="submit" value="Create!" class="btn btn-primary" style="margin-top: 12px;" />
             <a href="@Url.RouteUrl("Home")">or cancel</a>
