@@ -8,7 +8,7 @@
     @Html.AntiForgeryToken()
 
 
-    <div class="panel panel-default">
+    <div class="panel panel-default registerPanel">
         <div class="panel-heading">
             <div class="panel-title">
                 <h2>Create your post</h2>
@@ -42,9 +42,10 @@
             <div class="input-group">
                 @Html.TextBoxFor(u => u.ImgFile, new { type = "file" })
             </div>
+            <br/>
 
-            <input type="submit" value="Create!" class="btn btn-primary" style="margin-top: 12px;" />
-            <a href="@Url.RouteUrl("Home")">or cancel</a>
+            <input type="submit" value="Create!" class="btn btn-primary myBtn" />
+            <a href="@Url.RouteUrl("Home")"><div class="forText">or cancel</div></a>
         </div>
     </div>
     

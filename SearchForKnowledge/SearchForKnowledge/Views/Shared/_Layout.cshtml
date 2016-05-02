@@ -17,7 +17,7 @@
         </a>
     </div>
 
-    <br/>
+
 
     <div id="search">
         <div class="input-group">
@@ -32,7 +32,7 @@
 <div id="greeting">
     @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
     {
-        <div class="pull-right">Welcome back @Session["userName"].ToString()!</div>
+        <div class="pull-right forText">Welcome back @Session["userName"].ToString()!</div>
     }
 </div>
   
@@ -59,7 +59,7 @@
             <li>
                 @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
                 {
-                <a id="adminTest" href="@Url.RouteUrl("AdminPage")"><div class="navFont">Admin pag</div>e</a>
+                <a id="adminTest" href="@Url.RouteUrl("AdminPage")"><div class="navFont">Admin page</div></a>
                 }
             </li>
 
