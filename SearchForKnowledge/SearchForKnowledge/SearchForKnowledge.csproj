@@ -124,12 +124,12 @@
     <Content Include="Content\Styles\images\The-backside-of-a-very-old-book.jpg" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Database\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Database\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Database\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Database\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Database\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Styles\bootstrap.css.map" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\UserImages\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
