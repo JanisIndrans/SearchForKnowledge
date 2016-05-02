@@ -74,7 +74,7 @@ namespace SearchForKnowledge.Database
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
 
-            var coll = new List<Post>(database.GetCollection<Post>("Post").AsQueryable<Post>());
+            var coll = new List<Post>(database.GetCollection<Post>("Posts").AsQueryable<Post>());
 
             return coll;
             /*var coll = database.GetCollection<BsonDocument>("Posts");
