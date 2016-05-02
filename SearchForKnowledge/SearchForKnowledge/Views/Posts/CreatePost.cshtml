@@ -3,7 +3,7 @@
     ViewBag.Title = "CreatePost";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreatePost", "Posts", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -26,11 +26,6 @@
                 @Html.LabelFor(u => u.Author)
                 @Html.TextBoxFor(u => u.Author, new {@class = "form-control"})
             </div>
-
-            <div class="form-group-sm">
-                @Html.LabelFor(u => u.PicturePath)
-                @Html.TextBoxFor(u => u.PicturePath, new {@class = "form-control"})
-            </div>
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.UserId)
                 @Html.TextBoxFor(u => u.UserId, new {@class = "form-control"})
@@ -44,8 +39,11 @@
                 @Html.TextBoxFor(u => u.Description, new {@class = "form-control"})
             </div>
 
+            <div class="input-group">
+                @Html.TextBoxFor(u => u.ImgFile, new { type = "file" })
+            </div>
 
-            <input type="submit" value="Create!" class="btn btn-primary"/>
+            <input type="submit" value="Create!" class="btn btn-primary" style="margin-top: 12px;" />
             <a href="@Url.RouteUrl("Home")">or cancel</a>
         </div>
     </div>
