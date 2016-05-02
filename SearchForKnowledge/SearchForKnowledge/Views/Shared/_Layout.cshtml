@@ -39,13 +39,23 @@
     <div id="menu">
         <ul>
             <li><a href="@Url.RouteUrl("Home")">Home</a></li>
+
+            @if (HttpContext.Current.Session["userName"] == null)
+            {
             <li><a href="@Url.RouteUrl("Register")">Register</a></li>
+            }
             
+            @if (HttpContext.Current.Session["userName"] == null)
+            {
             <li><a href="@Url.RouteUrl("Login")">Login</a></li>
+            }
             <li><a href="@Url.RouteUrl("About")">About</a></li>
             <li><a href="@Url.RouteUrl("CreatePost")">Create a post</a></li>
             <li>
-                <a href="@Url.RouteUrl("AdminPage")" data-test="Please enter PIN">Admin page</a>
+                @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
+                {
+                <a id="adminTest" href="@Url.RouteUrl("AdminPage")">Admin page</a>
+                }
             </li>
 
             <li class="pull-right">

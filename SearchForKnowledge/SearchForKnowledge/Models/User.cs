@@ -13,6 +13,7 @@ namespace SearchForKnowledge.Models
         public string SchoolName { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
+        public string type { get; set; }
 
         public void SetPassword(string password)
         {

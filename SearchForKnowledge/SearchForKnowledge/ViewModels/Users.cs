@@ -26,6 +26,8 @@ namespace SearchForKnowledge.ViewModels
         public string Country { get; set; }
         [Required, MaxLength(128)]
         public string City { get; set; }
+        [Required, MaxLength(128)]
+        public string Type { get; set; }
     }
 
     public class UsersLogin {
@@ -55,5 +57,8 @@ namespace SearchForKnowledge.ViewModels
 
         [Required, MaxLength(128)]
         public string City { get; set; }
+
+        [Required, MaxLength(128)]
+        public string Type { get; set; }
     }
 }
