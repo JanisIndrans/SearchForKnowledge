@@ -3,17 +3,19 @@
     ViewBag.Title = "Index";
 }
 <div>
-    <h2>
-        Recently Added
+    <h2 id="recent">
+        Rescent posts
     </h2>
 
-    <div class="panel-group" id="accordion">
+    <br/>
+
+    <div class="panel-group accordion" id="accordion">
 
         @for(int x = 0; x < Model.Posts.Count; x++)
         {
             
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading accordion">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@x">@Model.Posts.ElementAt(x).BookTitle</a>
                             <a data-toggle="collapse" class="pull-right" data-parent="#accordion" href="#">@Model.Posts.ElementAt(x).CategoryId</a>

@@ -11,7 +11,7 @@
                 <h2>Admin Page</h2>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body registerPanel">
             @Html.ValidationSummary()
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Username)
@@ -44,8 +44,8 @@
             </div>
 
 
-            <input type="submit" value="Update" class="btn btn-primary"/>
-            <a href="@Url.RouteUrl("Home")">or cancel</a>
+            <input type="submit" value="Update" class="btn btn-primary myBtn"/>
+            <a href="@Url.RouteUrl("Home")"><div class="forText">or cancel</div></a>
         </div>
     </div>
 }

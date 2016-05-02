@@ -13,9 +13,10 @@
 <div id="header">
     <div id="logo">
         <a href="@Url.RouteUrl("Home")">
-            <img src="~/Content/Styles/images/logo.png"/>
+            <img src="~/Content/Styles/images/logoNew.png"/>
         </a>
     </div>
+
 
 
     <div id="search">
@@ -31,7 +32,7 @@
 <div id="greeting">
     @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
     {
-        <div class="pull-right">Welcome back @Session["userName"].ToString()!</div>
+        <div class="pull-right forText">Welcome back @Session["userName"].ToString()!</div>
     }
 </div>
   
@@ -39,33 +40,33 @@
     <!-- star menu -->
     <div id="menu">
         <ul>
-            <li><a href="@Url.RouteUrl("Home")">Home</a></li>
+            <li><a href="@Url.RouteUrl("Home")"><div class="navFont">Home</div></a></li>
 
             @if (HttpContext.Current.Session["userName"] == null)
             {
-            <li><a href="@Url.RouteUrl("Register")">Register</a></li>
+            <li><a href="@Url.RouteUrl("Register")"><div class="navFont">Register</div></a></li>
             }
             
             @if (HttpContext.Current.Session["userName"] == null)
             {
-            <li class="pull-right"><a href="@Url.RouteUrl("Login")">Login</a></li>
+            <li class="pull-right"><a href="@Url.RouteUrl("Login")"><div class="navFont">Login</div></a></li>
             }
-            <li><a href="@Url.RouteUrl("About")">About</a></li>
+            <li><a href="@Url.RouteUrl("About")"><div class="navFont">About</div></a></li>
             @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
             {
-            <li><a href="@Url.RouteUrl("CreatePost")">Create a post</a></li>
+            <li><a href="@Url.RouteUrl("CreatePost")"><div class="navFont">Create a post</div></a></li>
             }
             <li>
                 @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
                 {
-                <a id="adminTest" href="@Url.RouteUrl("AdminPage")">Admin page</a>
+                <a id="adminTest" href="@Url.RouteUrl("AdminPage")"><div class="navFont">Admin page</div></a>
                 }
             </li>
 
             <li class="pull-right">
                 @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
                 {
-                    <a href="@Url.RouteUrl("Logout")" data-post="Are you sure you want to Logout?">Logout</a>
+                    <a href="@Url.RouteUrl("Logout")" data-post="Are you sure you want to Logout?"><div class="navFont">Logout</div></a>
                 }
             </li>
         </ul>
@@ -84,6 +85,7 @@
             <div>
                 <a href="#">Programming</a>
             </div>
+            <br/>
             <div>
                 <a href="#">Design</a>
             </div>
