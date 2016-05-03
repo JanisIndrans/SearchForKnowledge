@@ -88,4 +88,3 @@ C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchFor
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.pdb
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.xml
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
-C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
