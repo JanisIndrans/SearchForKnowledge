@@ -183,6 +183,7 @@
     <Content Include="Views\Posts\CreatePost.cshtml" />
     <Content Include="Views\Users\ShowHash.cshtml" />
     <Content Include="Views\Users\AdminPage.cshtml" />
+    <Content Include="Views\Users\WelcomePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,36 +17,43 @@
             </div>
         </div>
         <div class="panel-body registerPanel">
+            <div class="duplicateUserMessage">@Model.DuplicateUserMessage</div>
             @Html.ValidationSummary()
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Username)
-                @Html.TextBoxFor(u => u.Username, new { @class = "form-control, input" })
+                @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input"})
 
             </div>
             <br/>
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Password)
-                @Html.TextBoxFor(u => u.Password, new { @class = "form-control, input" })
+                @Html.TextBoxFor(u => u.Password, new {@class = "form-control, input"})
             </div>
-            <br />
+            <br/>
+            <div class="form-group-sm">
+                @Html.LabelFor(u => u.ConfirmPassword)
+                @Html.TextBoxFor(u => u.ConfirmPassword, new { @class = "form-control, input" })
+            </div>
+            <br/>
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.SchoolName)
-                @Html.TextBoxFor(u => u.SchoolName, new { @class = "form-control, input" })
+                @Html.TextBoxFor(u => u.SchoolName, new {@class = "form-control, input"})
             </div>
-            <br />
+            <br/>
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Country)
-                @Html.TextBoxFor(u => u.Country, new { @class = "form-control, input" })
+                @Html.TextBoxFor(u => u.Country, new {@class = "form-control, input"})
             </div>
-            <br />
+            <br/>
             <div class="form-group">
                 @Html.LabelFor(u => u.City)
-                @Html.TextBoxFor(u => u.City, new { @class = "form-control, input" })
+                @Html.TextBoxFor(u => u.City, new {@class = "form-control, input"})
             </div>
-            
 
-            <input type="submit" value="Sign up" class="btn btn-primary myBtn" />
-            <a href="#"><div class="forText">or cancel</div></a>
+
+            <input type="submit" value="Sign up" class="btn btn-primary myBtn"/>
+            <a href="#">
+                <div class="forText">or cancel</div></a>
         </div>
     </div>
 }

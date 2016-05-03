@@ -15,18 +15,37 @@ namespace SearchForKnowledge.ViewModels
         public string City { get; set; }
     }
 
-    public class UsersNew {
-        [Required, MaxLength(128)]
-        public string Username { get; set; }
-        [Required, DataType(DataType.Password)]
+    public class UsersNew
+    {
+
+        public string DuplicateUserMessage { get; set; }
+
+        [DataType(DataType.Password)]
+        [StringLength(255, MinimumLength = 8)]
+        [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*(_|[^\w])).+$", ErrorMessage =
+            "Password must contain both lower and upper case letters and a nummeric digit! Password " +
+            "must not contain non-alphanumeric letters!")]
         public string Password { get; set; }
+
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        [StringLength(255, MinimumLength = 8)]
+        [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*(_|[^\w])).+$", ErrorMessage =
+            "Password must contain both lower and upper case letters and a nummeric digit! Password " +
+            "must not contain non-alphanumeric letters!")]
+        public string ConfirmPassword { get; set; }
+
+        [Required, MaxLength(128), MinLength(3)]
+        public string Username { get; set; }
         [Required, MaxLength(128)]
         public string SchoolName { get; set; }
         [Required, MaxLength(128)]
         public string Country { get; set; }
         [Required, MaxLength(128)]
         public string City { get; set; }
-        [Required, MaxLength(128)]
+
         public string Type { get; set; }
     }
 
