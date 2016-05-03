@@ -32,7 +32,7 @@
 <div id="greeting">
     @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
     {
-        <div class="pull-right forText">Welcome back @Session["userName"].ToString()!</div>
+        <div class="pull-right forText">Welcome back <div class="name" >@Session["userName"].ToString()!</div></div>
     }
 </div>
   
@@ -40,7 +40,7 @@
     <!-- star menu -->
     <div id="menu">
         <ul>
-            <li><a href="@Url.RouteUrl("Home")"><div class="navFont">Home</div></a></li>
+            <li class="active"><a href="@Url.RouteUrl("Home")"><div class="navFont">Home</div></a></li>
 
             @if (HttpContext.Current.Session["userName"] == null)
             {

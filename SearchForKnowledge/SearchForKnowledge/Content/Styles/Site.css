@@ -313,3 +313,14 @@ body {
     color:white;
     display:inline;
 }
+.input {
+    font-family:Verdana;
+    font-size: 20px;
+    color: black;
+    display:inline;
+    border-radius:4px;
+}
+.name {
+    font-weight:bold;
+    display:inline;
+}
