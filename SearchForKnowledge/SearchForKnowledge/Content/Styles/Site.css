@@ -2,8 +2,10 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #000000 url(images/The-backside-of-a-very-old-book.jpg) repeat top left;
+    background: #a73737;
+    background: linear-gradient(to left, #a73737 , #7a2828);
 	text-align: justify;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 #header {
@@ -13,9 +15,9 @@ body {
 }
 #menu {
 	width: 950px;
-	height: 60px;
+	height: 70px;
 	margin: 0 auto;
-	background: #6AA2FD url(images/brown_leather950x60.png);
+	background: rgba(25, 25, 25, 0.83);
     border-radius: 10px;
 }
 #menu ul {
@@ -34,15 +36,18 @@ body {
 	float: left;
 	padding: 18px 30px 0 30px;
 	text-decoration: none;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Verdana, Geneva, sans-serif;
 	font-size: 1em;
 	font-weight: bold;
 	color: #FFFFFF;
 }
 #menu a:hover {
-
-    color: blue;
-
+     color: ##a73737;
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
 }
 #search {
     float: right;
@@ -55,6 +60,7 @@ body {
     height: 88px;
 	padding: 20px 90px 0 0;
 	float: left;
+    display:compact;
 }
 #greeting {
     width: 900px;
@@ -65,17 +71,22 @@ body {
 }
 
 .panel-heading {
-    background: #000000 url(images/sidebar.png) repeat top left;
+    background-color: transparent;
 }
+
 .panel-title {
-    color: white;
+    color: #191919;
+    font-size: 20px;
+    background-color: transparent;
+
 }
 
 .panel-body {
-    background-color: white;
+    background-color: transparent;
 }
 .panel {
     background-color: transparent;
+    color:white;
     border: 0;
 }
 
@@ -96,7 +107,7 @@ body {
 	float: left;
 	width: 245px;
     height: 1000px;
-    background: #000000 url(images/sidebar.png) repeat top left;
+    background: rgba(25, 25, 25, 0.81);
     padding-right: 5px;
     color: white;
     border-radius: 10px;
@@ -105,14 +116,28 @@ body {
 #sidebarContent {
     padding: 20px;
     text-align: left;
-    font-size: 20px;
+    font-size: 25px;
 }
 #sidebarContent a {
-    text-decoration: none;
+    background-color: rgba(130, 41, 41, 0.86);
+    border-radius: 4px;
     color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: table-cell;
+    font-size: 17px;
+    margin: 2px 2px;
+    cursor: pointer;
 }
 #sidebarContent a:hover {
-    color: red;
+    color: #808080;
+    border-bottom: double;
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
 }
 #footer {
     clear:both;
@@ -120,6 +145,7 @@ body {
     padding:5px;
     font-size: 18px;
     font-weight: bold;
+    color: #191919;
 }
 
 #hyperlinkColorWhite {
@@ -134,7 +160,6 @@ body {
     float:left;
     padding:3px;
     margin-bottom: 20px;
-
 }
 #contentPicture img {
     max-height: 125px;
@@ -151,7 +176,7 @@ body {
 }
 
 #contentFooter {
-    background: #000000 url(images/sidebar.png) repeat top left;
+    background: #000000 url(images/sidebarNew.png) repeat top left;
     clear:both;
     text-align:center;
     padding:5px;
@@ -165,11 +190,11 @@ body {
 
 
 #hyperlinkColorWhite:hover {
-    color: red;
+    color: #a73737;
 }
 
 #searchColour {
-    background: #000000 url(images/sidebar.png) repeat top left;
+    background: #191919;
     border: 0;
 }
 
@@ -235,3 +260,67 @@ body {
     max-width: 600px;
 }
 /*--------------------Zoom picture-------------------------*/
+.navFont {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 20px;
+    border-bottom:groove;
+}
+
+.navFont:hover {
+     color: #a73737;
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
+}
+
+.accordion {
+    background-color: #191919;
+    border-radius:10px;
+}
+
+#recent {
+    background-color: rgba(25, 25, 25, 0.68);
+    height: 40px;
+    display:compact;
+    padding:0px;
+    margin: 0px;
+    text-align: start;
+    font-family: Verdana;
+    font-size: 30px;
+    text-align:center;
+    color: white;
+    background-color: none;
+    border-radius:4px;
+}
+.registerPanel {
+    background-color: transparent;
+    color: white;
+    font-family:Verdana;
+    font-size:20px;
+    font-style:italic;
+}
+.myBtn {
+    background-color:#a73737;
+    border-color: white;
+}
+
+    .myBtn:hover {
+        background-color: transparent;
+    }
+.forText {
+    color:white;
+    display:inline;
+}
+.input {
+    font-family:Verdana;
+    font-size: 20px;
+    color: black;
+    display:inline;
+    border-radius:4px;
+}
+.name {
+    font-weight:bold;
+    display:inline;
+}

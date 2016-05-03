@@ -16,33 +16,37 @@
                 <h2>Sign up as a new user!</h2>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body registerPanel">
             @Html.ValidationSummary()
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Username)
-                @Html.TextBoxFor(u => u.Username, new { @class = "form-control" })
+                @Html.TextBoxFor(u => u.Username, new { @class = "form-control, input" })
 
             </div>
+            <br/>
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Password)
-                @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
+                @Html.TextBoxFor(u => u.Password, new { @class = "form-control, input" })
             </div>
+            <br />
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.SchoolName)
-                @Html.TextBoxFor(u => u.SchoolName, new { @class = "form-control" })
+                @Html.TextBoxFor(u => u.SchoolName, new { @class = "form-control, input" })
             </div>
+            <br />
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Country)
-                @Html.TextBoxFor(u => u.Country, new { @class = "form-control" })
+                @Html.TextBoxFor(u => u.Country, new { @class = "form-control, input" })
             </div>
+            <br />
             <div class="form-group">
                 @Html.LabelFor(u => u.City)
-                @Html.TextBoxFor(u => u.City, new { @class = "form-control" })
+                @Html.TextBoxFor(u => u.City, new { @class = "form-control, input" })
             </div>
             
 
-            <input type="submit" value="Sign up" class="btn btn-primary" />
-            <a href="#">or cancel</a>
+            <input type="submit" value="Sign up" class="btn btn-primary myBtn" />
+            <a href="#"><div class="forText">or cancel</div></a>
         </div>
     </div>
 }

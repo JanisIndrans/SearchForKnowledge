@@ -8,7 +8,7 @@
     @Html.AntiForgeryToken()
 
 
-    <div class="panel panel-default">
+    <div class="panel panel-default registerPanel">
         <div class="panel-heading">
             <div class="panel-title">
                 <h2>Login</h2>
@@ -18,17 +18,19 @@
             @Html.ValidationSummary()
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Username)
-                @Html.TextBoxFor(u => u.Username, new {@class = "form-control"})
+                @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input"})
 
             </div>
+            <br/>
 
             <div class="form-group">
                 @Html.LabelFor(u => u.Password)
-                @Html.TextBoxFor(u => u.Password, new {@class = "form-control"})
+                <div class="input">
+                @Html.TextBoxFor(u => u.Password, new {@class = "form-control, input"})</div>
             </div>
 
-            <input type="submit" value="Login" class="btn btn-primary"/>
-            <a href="@Url.RouteUrl("Home")">or cancel</a>
+            <input type="submit" value="Login" class="btn btn-primary myBtn"/>
+            <a href="@Url.RouteUrl("Home")"><div class="forText">or cancel</div></a>
         </div>
     </div>
         }
