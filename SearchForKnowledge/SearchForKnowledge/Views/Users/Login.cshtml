@@ -18,13 +18,15 @@
             @Html.ValidationSummary()
             <div class="form-group-sm">
                 @Html.LabelFor(u => u.Username)
-                @Html.TextBoxFor(u => u.Username, new {@class = "form-control"})
+                @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input"})
 
             </div>
+            <br/>
 
             <div class="form-group">
                 @Html.LabelFor(u => u.Password)
-                @Html.TextBoxFor(u => u.Password, new {@class = "form-control"})
+                <div class="input">
+                @Html.TextBoxFor(u => u.Password, new {@class = "form-control, input"})</div>
             </div>
 
             <input type="submit" value="Login" class="btn btn-primary myBtn"/>
