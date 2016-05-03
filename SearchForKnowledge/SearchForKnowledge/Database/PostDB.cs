@@ -12,36 +12,36 @@ using Newtonsoft.Json;
 
 namespace SearchForKnowledge.Database
 {
-    public class PostDB
+    public class PostDb
     {
-        public string getPostByName(string BookTitle)
+        public string GetPostByName(string bookTitle)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Posts");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", BookTitle);
+            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", bookTitle);
             return filter.ToString();
         }
 
-        public void updatePost(string BookTitle, string Author, string PicturePath, int UserId, int CategoryId, string description)
+        public void UpdatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Posts");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", BookTitle);
+            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", bookTitle);
             var update = Builders<BsonDocument>.Update
-                .Set("BookTitle", BookTitle)
-                .Set("Author", Author)
-                .Set("PicturePath", PicturePath)
-                .Set("UserId", UserId)
-                .Set("CategoryId", CategoryId)
+                .Set("BookTitle", bookTitle)
+                .Set("Author", author)
+                .Set("PicturePath", picturePath)
+                .Set("UserId", userId)
+                .Set("CategoryId", categoryId)
                 .Set("Description", description);
             var result = coll.UpdateOne(filter, update);
         }
 
-        public void createPost(string BookTitle, string Author, string PicturePath, int UserId, int CategoryId, string description)
+        public void CreatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
@@ -49,27 +49,27 @@ namespace SearchForKnowledge.Database
 
             var document = new BsonDocument
                 {
-                    {"BookTitle",BookTitle},
-                    {"Author",Author},
-                    {"PicturePath",PicturePath},
-                    {"UserId",UserId},
-                    {"CategoryId", CategoryId},
+                    {"BookTitle",bookTitle},
+                    {"Author",author},
+                    {"PicturePath",picturePath},
+                    {"UserId",userId},
+                    {"CategoryId", categoryId},
                     {"Description", description}
                 };
             coll.InsertOne(document);
         }
 
-        public void removePost(string BookTitle)
+        public void RemovePost(string bookTitle)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Posts");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", BookTitle);
+            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", bookTitle);
             var result = coll.DeleteOne(filter);
         }
 
-        public List<Post> getAllPosts()
+        public List<Post> GetAllPosts()
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");

@@ -79,7 +79,6 @@ C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledg
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.xml
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Razor.xml
-C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.dll
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.pdb
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.dll

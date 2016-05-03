@@ -13,8 +13,8 @@ namespace SearchForKnowledge.Controllers
     {
         public ActionResult Index()
         {
-            PostDB db =new PostDB();
-            List<Post> posts = db.getAllPosts();
+            PostDb db =new PostDb();
+            List<Post> posts = db.GetAllPosts();
 
             return View(new PostsShowAll
             {
@@ -34,7 +34,7 @@ namespace SearchForKnowledge.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult CreatePost(PostsNew form)
         {
-            PostDB db = new PostDB();
+            PostDb db = new PostDb();
             string imgPath = "";
             if (form.ImgFile != null)
             {
@@ -45,7 +45,7 @@ namespace SearchForKnowledge.Controllers
             }
 
 
-            db.createPost(form.BookTitle, form.Author, imgPath, Int32.Parse(form.UserId), Int32.Parse(form.CategoryId), form.Description);
+            db.CreatePost(form.BookTitle, form.Author, imgPath, Int32.Parse(form.UserId), Int32.Parse(form.CategoryId), form.Description);
             
             return RedirectToRoute("Home");
         }

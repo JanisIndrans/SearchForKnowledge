@@ -7,11 +7,11 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using SearchForKnowledge.Models;
 
-namespace SearchForKnowledge
+namespace SearchForKnowledge.Database
 {
-    class UserDB
+    class UserDb
     {
-        public string getUserByName(string username)
+        public string GetUserByName(string username)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
@@ -21,7 +21,7 @@ namespace SearchForKnowledge
             return filter.ToString();
         }
 
-        public void updateUser(string userName, string password, string schoolName, string country, string city)
+        public void UpdateUser(string userName, string password, string schoolName, string country, string city)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
@@ -29,7 +29,7 @@ namespace SearchForKnowledge
 
             var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
             var update = Builders<BsonDocument>.Update
-                .Set("userName", userName)
+                //.Set("userName", userName) -----we don't need this as it is not Recomended to change
                 .Set("password",password)
                 .Set("schoolName", schoolName)
                 .Set("country", country)
@@ -39,25 +39,29 @@ namespace SearchForKnowledge
             var result = coll.UpdateOne(filter, update);
         }
 
-        public void addUser(string userName, string password, string schoolName, string country, string city, string type)
+        public bool AddUser(string userName, string password, string schoolName, string country, string city, string type)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Users");
-
-            var document = new BsonDocument
+            if (!CheckIfUsernameExist(userName))
+            {
+                var document = new BsonDocument
                 {
-                    {"userName",userName},
-                    {"password",password},
-                    {"schoolName",schoolName},
-                    {"country",country},
-                    {"city",city},
-                    {"type", type}
+                    {"userName", userName},
+                    {"password", password},
+                    {"schoolName", schoolName},
+                    {"country", country},
+                    {"city", city},
+                    {"type", "user"}
                 };
-            coll.InsertOne(document);
+                coll.InsertOne(document);
+                return true;
+            }
+            return false;
         }
 
-        public void removeUser(string userName)
+        public void RemoveUser(string userName)
         {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
@@ -67,7 +71,7 @@ namespace SearchForKnowledge
             var result = coll.DeleteOne(filter);
         }
 
-        public string loginUser(string userName, string pass)
+        public string LoginUser(string userName, string pass)
         {
             string result = "";
             
@@ -90,7 +94,7 @@ namespace SearchForKnowledge
             }
             return result;
         }
-        public string getPassword(string username) {
+        public string GetPassword(string username) {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Users");
@@ -99,7 +103,7 @@ namespace SearchForKnowledge
             var results = coll.Find(filter).ToList().First();
             return results["password"].ToString();
         }
-        public string getType(string username) {
+        public string GetType(string username) {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Users");
@@ -107,6 +111,22 @@ namespace SearchForKnowledge
             var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
             var results = coll.Find(filter).ToList().First();
             return results["type"].ToString();
+        }
+
+        public bool CheckIfUsernameExist(string userName)
+        {
+            var mongoClient = new MongoClient("mongodb://localhost");
+            var database = mongoClient.GetDatabase("SearchForKnowledge");
+
+            var coll = database.GetCollection<BsonDocument>("Users");
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Regex("userName", new BsonRegularExpression("/^" + userName + "$/i"));
+
+            if (coll.Find(filter).Count() != 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
