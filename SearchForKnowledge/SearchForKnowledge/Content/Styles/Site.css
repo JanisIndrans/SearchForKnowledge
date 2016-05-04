@@ -70,14 +70,21 @@ body {
 }
 
 .panel-heading {
-    background-color: transparent;
+    background: #b0b0b0;
+
 }
 
 .panel-title {
-    color: #191919;
+    color: #ffeeee;
     font-size: 20px;
-    background-color: transparent;
+    background: #777;
 
+}
+
+.panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 4px;
+    background-color: #4d4d4d;
 }
 
 .panel-body {
@@ -275,7 +282,7 @@ body {
 }
 
 .accordion {
-    background-color: #191919;
+    background-color: black;
     border-radius:10px;
 }
 
@@ -328,7 +335,7 @@ body {
 #postDescription {
     margin-left: 10px;
     font-size: 20px;
-    color:#336699;
+    color:#4493e1;
     font-weight:bold;
 }
 #postContainer {
