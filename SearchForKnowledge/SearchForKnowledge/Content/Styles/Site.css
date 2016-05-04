@@ -2,8 +2,6 @@
 body {
 	margin: 0;
 	padding: 0;
-    background: #a73737;
-    background: linear-gradient(to left, #a73737 , #7a2828);
 	text-align: justify;
     font-family: Verdana, Geneva, sans-serif;
 }
@@ -43,7 +41,7 @@ body {
 	color: #FFFFFF;
 }
 #menu a:hover {
-     color: ##a73737;
+     color: #336699;
     -webkit-transition: all 1000ms ease;
     -moz-transition: all 1000ms ease;
     -ms-transition: all 1000ms ease;
@@ -120,7 +118,6 @@ body {
     font-size: 25px;
 }
 #sidebarContent a {
-    background-color: rgba(130, 41, 41, 0.86);
     border-radius: 4px;
     color: white;
     padding: 15px 32px;
@@ -132,8 +129,9 @@ body {
     cursor: pointer;
 }
 #sidebarContent a:hover {
-    color: #808080;
+    color: #336699;
     border-bottom: double;
+    border-left: double;
     -webkit-transition: all 1000ms ease;
     -moz-transition: all 1000ms ease;
     -ms-transition: all 1000ms ease;
@@ -268,7 +266,7 @@ body {
 }
 
 .navFont:hover {
-     color: #a73737;
+     color: #336699;
     -webkit-transition: all 1000ms ease;
     -moz-transition: all 1000ms ease;
     -ms-transition: all 1000ms ease;
@@ -324,4 +322,23 @@ body {
 .name {
     font-weight:bold;
     display:inline;
+}
+#postDescription {
+    margin-left: 10px;
+    font-size: 20px;
+    color:#336699;
+    font-weight:bold;
+}
+#postContainer {
+    background-color: #808080;
+    margin-top:5px;
+    margin-left: 20px;
+    min-height:100px;
+    width: 80%;
+    
+}
+#description {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
 }

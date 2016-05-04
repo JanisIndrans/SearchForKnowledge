@@ -88,3 +88,36 @@ C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchFor
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.pdb
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.xml
 C:\Users\Viktor\Documents\GitHub\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\SearchForKnowledge.dll.config
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\SearchForKnowledge.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\SearchForKnowledge.pdb
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\Antlr3.Runtime.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Bson.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.Core.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\Newtonsoft.Json.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Helpers.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Mvc.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Optimization.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Razor.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Razor.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\WebGrease.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\Antlr3.Runtime.pdb
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.pdb
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\BCrypt.Net.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Bson.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\MongoDB.Driver.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\Newtonsoft.Json.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Helpers.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Mvc.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Optimization.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.Razor.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Razor.xml
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.dll
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.pdb
