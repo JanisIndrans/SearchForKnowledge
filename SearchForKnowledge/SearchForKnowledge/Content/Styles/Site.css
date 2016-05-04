@@ -295,21 +295,21 @@ body {
 }
 .registerPanel {
     background-color: transparent;
-    color: white;
+    color: black;
     font-family:Verdana;
     font-size:20px;
     font-style:italic;
 }
 .myBtn {
-    background-color:#a73737;
+    background-color:#336699;
     border-color: white;
 }
 
     .myBtn:hover {
-        background-color: transparent;
+        background-color: #93b9de;
     }
 .forText {
-    color:white;
+    color:black;
     display:inline;
 }
 .input {
