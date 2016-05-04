@@ -53,7 +53,10 @@
                                 </div>
 
                                 <div class="panel pre-scrollable" id="contentDescription">
-                                    Description: @Model.Posts.ElementAt(x)..Description
+                                    <div>
+                                    <div id="postDescription">Description:</div>
+                                    <div id="postContainer"> <div id="description"> @Model.Posts.ElementAt(x)..Description </div> </div>
+                                </div>
                                 </div>
                                 <div id="contentFooter">
                                     <a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> 7</a> |
