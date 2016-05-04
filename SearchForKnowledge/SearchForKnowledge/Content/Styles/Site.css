@@ -294,7 +294,9 @@ body {
     border-radius:4px;
 }
 .registerPanel {
-    background-color: transparent;
+    margin-top:15px;
+    margin-left:10px;
+    background-color: #b0b0b0;
     color: black;
     font-family:Verdana;
     font-size:20px;
@@ -303,8 +305,8 @@ body {
 .myBtn {
     background-color:#336699;
     border-color: white;
+    margin-left:10px;
 }
-
     .myBtn:hover {
         background-color: #93b9de;
     }
@@ -341,4 +343,13 @@ body {
     margin-left: 15px;
     margin-right: 15px;
     margin-top: 10px;
+}
+.panelItems {
+    margin-left:10px;
+    font-size:20px;
+}
+
+.panelInput {
+    margin-left:10px;
+    font-size:20px;
 }

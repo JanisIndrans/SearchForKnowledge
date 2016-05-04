@@ -65,9 +65,11 @@
 
             <li class="pull-right">
                 @if (HttpContext.Current.Session["userName"] != null && !Session["userName"].Equals(""))
-                {
-                    <a href="@Url.RouteUrl("Logout")" data-post="Are you sure you want to Logout?"><div class="navFont">Logout</div></a>
-                }
+{
+    <div id="messageBox">
+        <a href="@Url.RouteUrl("Logout")" data-post="Are you sure you want to Logout?"><div class="navFont">Logout</div></a>
+    </div>
+}
             </li>
         </ul>
     </div>

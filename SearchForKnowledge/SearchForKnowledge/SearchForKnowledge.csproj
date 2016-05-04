@@ -124,6 +124,7 @@
     <Content Include="Content\Styles\images\The-backside-of-a-very-old-book.jpg" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\Site.css" />
+    <Content Include="Content\Styles\sweetalert.css" />
     <Content Include="Database\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Database\fonts\glyphicons-halflings-regular.woff2" />
@@ -152,6 +153,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Logout.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
