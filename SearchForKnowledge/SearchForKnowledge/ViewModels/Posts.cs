@@ -20,15 +20,15 @@ namespace SearchForKnowledge.ViewModels
     }
     public class PostsNew
     {
-        [Required, MaxLength(128)]
+        [Required, MaxLength(128), Display(Name = "Book title")]
         public string BookTitle { get; set; }
         [Required, MaxLength(128)]
         public string Author { get; set; }
         [Required]
         public HttpPostedFileBase ImgFile { get; set; }
-        [Required]
+        [Required, Display(Name = "User Id")]
         public string UserId { get; set; }
-        [Required]
+        [Required, Display(Name = "Category of the book")]
         public string CategoryId { get; set; }
         [Required]
         public string Description { get; set; }

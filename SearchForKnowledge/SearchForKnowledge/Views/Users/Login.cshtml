@@ -26,7 +26,7 @@
             <div class="form-group">
                 @Html.LabelFor(u => u.Password)
                 <div class="input">
-                @Html.TextBoxFor(u => u.Password, new {@class = "form-control, input"})</div>
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control, input" })</div>
             </div>
 
             <input type="submit" value="Login" class="btn btn-primary myBtn"/>

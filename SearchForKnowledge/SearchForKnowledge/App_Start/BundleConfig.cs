@@ -8,7 +8,8 @@ namespace SearchForKnowledge
         {
             bundles.Add(new StyleBundle("~/styles")
                 .Include("~/content/styles/bootstrap.css")
-                .Include("~/content/styles/site.css"));
+                .Include("~/content/styles/site.css")
+                .Include("~/content/styles/sweetalert.css"));
 
 
             bundles.Add(new ScriptBundle("~/scripts")
@@ -20,7 +21,8 @@ namespace SearchForKnowledge
                 .Include("~/scripts/bootstrap.min.js")
                 .Include("~/scripts/jquery-2.2.2.min.js")
                 .Include("~/scripts/jquery-2.2.3.min.js")
-                .Include("~/scripts/ImgZoom.js"));
+                .Include("~/scripts/ImgZoom.js")
+                .Include("~/scripts/sweetalert.min.js"));
         }
     }
 }

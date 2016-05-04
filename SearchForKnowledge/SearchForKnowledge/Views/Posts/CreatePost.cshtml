@@ -17,31 +17,48 @@
         <div class="panel-body">
             @Html.ValidationSummary()
             <div class="form-group-sm">
-                @Html.LabelFor(u => u.BookTitle)
-                @Html.TextBoxFor(u => u.BookTitle, new {@class = "form-control"})
+                <div class="panelItems">
+                    @Html.LabelFor(u => u.BookTitle)</div>
+                    <div class="panelInput">
+                        @Html.TextBoxFor(u => u.BookTitle, new {@class = "form-control"})
+                    </div>
 
-            </div>
+                </div>
 
             <div class="form-group-sm">
-                @Html.LabelFor(u => u.Author)
-                @Html.TextBoxFor(u => u.Author, new {@class = "form-control"})
+                <div class="panelItems">
+                    @Html.LabelFor(u => u.Author)</div>
+                    <div class="panelInput">
+                        @Html.TextBoxFor(u => u.Author, new {@class = "form-control"})
+                    </div>
+                </div>
+            <div class="form-group-sm">
+                <div class="panelItems">
+                    @Html.LabelFor(u => u.UserId)</div>
+                <div class="panelInput">
+                    @Html.TextBoxFor(u => u.UserId, new {@class = "form-control"})
+                </div>
             </div>
             <div class="form-group-sm">
-                @Html.LabelFor(u => u.UserId)
-                @Html.TextBoxFor(u => u.UserId, new {@class = "form-control"})
-            </div>
-            <div class="form-group-sm">
-                @Html.LabelFor(u => u.CategoryId)
-                @Html.TextBoxFor(u => u.CategoryId, new {@class = "form-control"})
+                <div class="panelItems">
+                    @Html.LabelFor(u => u.CategoryId)</div>
+                <div class="panelInput">
+                    @Html.TextBoxFor(u => u.CategoryId, new {@class = "form-control"})
+                </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(u => u.Description)
-                @Html.TextBoxFor(u => u.Description, new {@class = "form-control"})
-            </div>
+                <div class="panelItems">
+                    @Html.LabelFor(u => u.Description)</div>
+                    <div class="panelInput">
+                        @Html.TextBoxFor(u => u.Description, new {@class = "form-control"})
+                    </div>
+                </div>
 
             <div class="input-group">
-                @Html.TextBoxFor(u => u.ImgFile, new { type = "file" })
-            </div>
+                <div class="panelItems">Select book cover!</div>
+                <div class="panelItems">
+                    @Html.TextBoxFor(u => u.ImgFile, new { type = "file" })</div>
+                </div>
             <br/>
 
             <input type="submit" value="Create!" class="btn btn-primary myBtn" />

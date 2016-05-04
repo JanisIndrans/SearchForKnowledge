@@ -31,15 +31,15 @@ namespace SearchForKnowledge.ViewModels
         [Compare("Password")]
         [DataType(DataType.Password)]
         [StringLength(255, MinimumLength = 8)]
-        [Required]
+        [Required, Display(Name="Confirm password")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*(_|[^\w])).+$", ErrorMessage =
             "Password must contain both lower and upper case letters and a nummeric digit! Password " +
             "must not contain non-alphanumeric letters!")]
         public string ConfirmPassword { get; set; }
 
-        [Required, MaxLength(128), MinLength(3)]
+        [Required, MaxLength(128), MinLength(3), Display(Name="Username")]
         public string Username { get; set; }
-        [Required, MaxLength(128)]
+        [Required, MaxLength(128), Display(Name = "School name")]
         public string SchoolName { get; set; }
         [Required, MaxLength(128)]
         public string Country { get; set; }
