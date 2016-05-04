@@ -16,19 +16,19 @@
         </div>
         <div class="panel-body">
             @Html.ValidationSummary()
-            <div class="form-group-sm">
-                @Html.LabelFor(u => u.Username)
-                @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input"})
-
-            </div>
+            <div class="form-group-lg">
+                <div class="panelInput">
+                    @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input, loginInfo", placeholder="Username"})
+                    </div>
+                </div>
             <br/>
 
-            <div class="form-group">
-                @Html.LabelFor(u => u.Password)
-                <div class="input">
-                @Html.PasswordFor(u => u.Password, new { @class = "form-control, input" })</div>
-            </div>
+            <div class="form-group-lg">
 
+                <div class="panelInput">
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control, input, loginInfo", placeholder = "Password" })</div>
+            </div>
+            <br/>
             <input type="submit" value="Login" class="btn btn-primary myBtn"/>
             <a href="@Url.RouteUrl("Home")"><div class="forText">or cancel</div></a>
         </div>

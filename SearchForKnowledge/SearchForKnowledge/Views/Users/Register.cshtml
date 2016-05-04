@@ -19,49 +19,44 @@
         <div class="panel-body registerPanel">
             <div class="duplicateUserMessage">@Model.DuplicateUserMessage</div>
             @Html.ValidationSummary()
-            <div class="form-group-sm">
-                <div class="panelItems"> @Html.LabelFor(u => u.Username) </div>
+            <div class="form-group-lg">
+                
                 <div class="panelInput">
-                    @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input"})</div>
+                    @Html.TextBoxFor(u => u.Username, new {@class = "form-control", placeholder = "Username"})</div>
 
                 </div>
             <br/>
-            <div class="form-group-sm">
-                <div class="panelItems">
-                    @Html.LabelFor(u => u.Password)</div>
+            <div class="form-group-lg">
+               
                 <div class="panelInput">
-                    @Html.PasswordFor(u => u.Password, new {@class = "form-control, input"})</div>
+                    @Html.PasswordFor(u => u.Password, new { @class = "form-control", placeholder = "Password" })</div>
                 </div>
             <br/>
-            <div class="form-group-sm">
-                <div class="panelItems">
-                    @Html.LabelFor(u => u.ConfirmPassword)</div>
+            <div class="form-group-lg">
+               
                 <div class="panelInput">
-                    @Html.PasswordFor(u => u.ConfirmPassword, new { @class = "form-control, input" })</div>
+                    @Html.PasswordFor(u => u.ConfirmPassword, new { @class = "form-control", placeholder = "Re-enter password" })</div>
                 </div>
             <br/>
-            <div class="form-group-sm">
-                <div class="panelItems">
-                    @Html.LabelFor(u => u.SchoolName)</div>
+            <div class="form-group-lg">
+                
                 <div class="panelInput">
-                    @Html.TextBoxFor(u => u.SchoolName, new {@class = "form-control, input"})</div>
+                    @Html.TextBoxFor(u => u.SchoolName, new {@class = "form-control", placeholder = "Name of school"})</div>
                 </div>
             <br/>
-            <div class="form-group-sm">
-                <div class="panelItems">
-                    @Html.LabelFor(u => u.Country)</div>
+            <div class="form-group-lg">
+                
                 <div class="panelInput">
-                    @Html.TextBoxFor(u => u.Country, new {@class = "form-control, input"})</div>
+                    @Html.TextBoxFor(u => u.Country, new { @class = "form-control", placeholder = "Country" })</div>
                 </div>
             <br/>
-            <div class="form-group">
-                <div class="panelItems">
-                    @Html.LabelFor(u => u.City)</div>
-                  <div class="panelInput">  @Html.TextBoxFor(u => u.City, new {@class = "form-control, input"})</div>
+            <div class="form-group-lg">
+               
+                  <div class="panelInput">  @Html.TextBoxFor(u => u.City, new { @class = "form-control", placeholder = "City" })</div>
                 </div>
 
 
-            <input type="submit" value="Sign up" class="btn btn-primary myBtn"/>
+            <input type="submit" value="Sign up" class="btn btn-primary myBtn" id="#regBut"/>
             <a href="#">
                 <div class="forText">or cancel</div></a>
         </div>
