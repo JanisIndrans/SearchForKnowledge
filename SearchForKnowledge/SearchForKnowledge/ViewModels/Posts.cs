@@ -33,4 +33,17 @@ namespace SearchForKnowledge.ViewModels
         [Required]
         public string Description { get; set; }
     }
+
+    public class PostsSearch
+    {
+        public string ErrorMessage { get; set; }
+        public List<Post> Posts { get; set; } 
+    }
+
+    public class PostsSelection
+    {
+        public string ErrorMessage { get; set; }
+        public string NameOfCategory { get; set; }
+        public List<Post> Posts { get; set; } 
+    }
 }

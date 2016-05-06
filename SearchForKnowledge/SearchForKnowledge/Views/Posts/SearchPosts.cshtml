@@ -1,0 +1,16 @@
+﻿@using SearchForKnowledge.ViewModels
+@model SearchForKnowledge.ViewModels.PostsSearch
+@{
+    ViewBag.Title = "SearchPosts";
+}
+<div>
+    <h2 id="recent">
+        Search Results
+    </h2>
+    <div id="error">
+        @Model.ErrorMessage
+    </div>
+    @Html.Partial("_DisplayPosts", Model.Posts)
+    <br />
+
+</div>

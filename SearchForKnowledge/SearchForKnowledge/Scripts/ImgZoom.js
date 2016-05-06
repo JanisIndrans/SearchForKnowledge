@@ -40,4 +40,15 @@ $(document).ready(function () {
             return false;
         }
     });
+
+    //$("#search a").click(function(e) {
+    //    e.preventDefault();
+    //    var searchString = $('#search input:text').val();
+    //    alert(searchString);
+
+    //});
+
+    //$.get("/Home/SaveEmployeeRecord", { name: 'Deepak' }, function (data) {
+    //    alert(data);
+    //});
 });

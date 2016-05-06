@@ -1,5 +1,6 @@
 ﻿
 @using System.Web.Optimization
+@using SearchForKnowledge.Controllers
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +19,17 @@
     </div>
 
 
-
+@using (Html.BeginForm("SearchPosts", "Posts"))
+{
     <div id="search">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search in posts ...">
+            <input type="text" name="searchString" class="form-control" placeholder="Search by title...">
             <span class="input-group-btn">
-                        <a href="#" id="searchColour" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></a>
-                    </span>
+                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
         </div>
     </div>
+}
 </div>
 
 <div id="greeting">
@@ -76,23 +79,34 @@
 
 
 
-
-
 <div id="page">
     <div id="content">
         @RenderBody()
     </div>
+
+    <!-- Side bar begin---     Might move to some partial view-->
+
     <div id="sidebar">
-        <div id="sidebarContent">
-            <div>
-                <a href="#">Programming</a>
+
+        @using (Html.BeginForm("Category", "Posts"))
+        {
+            <div id="selection">
+                <div id="sidebarContent">
+                    <button class="btn btn-info" type="submit" name="categoryName" value="Programming">Programming</button>
+                </div>
+
+                <div id="sidebarContent">
+                    <button class="btn btn-info" type="submit" name="categoryName" value="Design">Design</button>
+                </div>
+
+                <div id="sidebarContent">
+                    <button class="btn btn-info" type="submit" name="categoryName" value="Database">Database</button>
+                </div>
             </div>
-            <br/>
-            <div>
-                <a href="#">Design</a>
-            </div>
-        </div>
+        }
     </div>
+
+    <!-- Side bar end -->
     <div id="footer">
         &copy; @DateTime.UtcNow.Year - Janis Indrans, Viktor Meduneckij, Nikita Cimaskevic
     </div>
