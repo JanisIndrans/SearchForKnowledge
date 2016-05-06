@@ -88,6 +88,52 @@ namespace SearchForKnowledge.Database
             return collection;*/
 
         }
+
+        public List<Post> GetSearchResults(string bookTitle)
+        {
+            var mongoClient = new MongoClient("mongodb://localhost");
+            var database = mongoClient.GetDatabase("SearchForKnowledge");
+            var coll = new List<Post>(database.GetCollection<Post>("Posts").AsQueryable<Post>());
+            List<Post> posts = new List<Post>();
+            if (coll.Count() != 0) { 
+                foreach (Post post in coll)
+                {
+                    if (post.BookTitle.ToLower().Contains(bookTitle.ToLower()))
+                    {
+                        posts.Add(post);
+                    }
+                }
+                if (posts.Count() != 0)
+                {
+                    return posts;  
+                }
+            }
+            return null;
+        }
+
+        //public List<Post> getAllProgramming()
+        //{
+        //    var result = new List<Post>();
+
+        //    var mongoClient = new MongoClient("mongodb://localhost");
+        //    var database = mongoClient.GetDatabase("SearchForKnowledge");
+        //    var coll = database.GetCollection<Post>("Posts");
+
+        //    var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, 1);
+        //    return result = coll.Find(filter).ToList();
+        //}
+
+        public List<Post> GetPostsByCategory(string categoryName)
+        {
+            var result = new List<Post>();
+
+            var mongoClient = new MongoClient("mongodb://localhost");
+            var database = mongoClient.GetDatabase("SearchForKnowledge");
+            var coll = database.GetCollection<Post>("Posts");
+
+            var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, 1);
+            return result = coll.Find(filter).ToList();
+        } 
         
     }
 

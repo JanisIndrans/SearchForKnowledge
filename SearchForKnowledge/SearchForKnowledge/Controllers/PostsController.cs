@@ -22,8 +22,39 @@ namespace SearchForKnowledge.Controllers
 
             });
         }
+
+        public ActionResult SearchPosts()
+        {
+
+            return View(new PostsSearch
+            {
+
+            });
+        }
+        [HttpPost]
+        public ActionResult SearchPosts(string searchString)
+        {
+            PostDb db = new PostDb();
+            List<Post> posts = db.GetSearchResults(searchString);
+            if (posts != null)
+            {
+                return View(new PostsSearch
+                {
+                    
+                    Posts = posts
+
+                });
+            }
+            return View(new PostsSearch
+            {
+                ErrorMessage = "Sorry nothing was found with this title",
+                Posts = new List<Post>()
+            });
+        }
+
         public ActionResult CreatePost()
         {
+
             return View(new PostsNew
             {
 
@@ -49,6 +80,39 @@ namespace SearchForKnowledge.Controllers
             
             return RedirectToRoute("Home");
         }
+
+
+        public ActionResult Category()
+        {
+
+            return View(new PostsSelection()
+            {
+
+            });
+        }
+        [HttpPost]
+        public ActionResult Category(string categoryName)
+        {
+            PostDb db = new PostDb();
+            List<Post> posts = db.GetPostsByCategory(categoryName);
+            if (posts != null)
+            {
+                return View(new PostsSelection()
+                {
+
+                    Posts = posts,
+                    NameOfCategory = categoryName
+                   
+
+                });
+            }
+            return View(new PostsSelection()
+            {
+                ErrorMessage = "Sorry nothing was found with this selection",
+                Posts = new List<Post>()
+            });
+        }
+
         }
 
     }
