@@ -10,9 +10,13 @@ $(document).ready(function () {
         e.preventDefault();
             $(".overlay").css({"opacity": "0.7"})
             .fadeIn("slow");
-        $("#ZoomImageLarge").html("<img src='" + $(this).attr("src") + "' alt='" + $(this).attr("alt") + "' /><br/>" + $(this).attr("alt") + "")
+        $("#ZoomImageLarge").html("<a href='#'> <img src='content/images/X.png' style='width:20px; height:20px;' class='pull-right'/> </a> <img src='" + $(this).attr("src") + "' />")
             .center()
             .fadeIn();
+        $("#ZoomImageLarge a").click(function () {
+            $(".overlay").fadeOut("slow");
+            $("#ZoomImageLarge").fadeOut("slow");
+        });
     });
 
     $(document).keydown(function (e) {
@@ -21,20 +25,19 @@ $(document).ready(function () {
             $("#ZoomImageLarge").fadeOut("slow");
         }
     });
+
+    $(".overlay").click(function () {
+        $(".overlay").fadeOut("slow");
+        $("#ZoomImageLarge").fadeOut("slow");
+    });
+
+
+
     $("body").on("scroll mousewheel touchmove", function (e) {
         if ($(".overlay").css("display") != "none") {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
-        $(".overlay").click(function () {
-            $(".overlay").fadeOut("slow");
-            $("#ZoomImageLarge").fadeOut("slow");
-        });
-
-        $("#ZoomImageLarge").click(function () {
-            $(".overlay").fadeOut("slow");
-            $("#ZoomImageLarge").fadeOut("slow");
-        });
     });
 });

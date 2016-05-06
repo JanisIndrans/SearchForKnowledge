@@ -11,15 +11,15 @@ namespace SearchForKnowledge.Database
 {
     class UserDb
     {
-        public string GetUserByName(string username)
-        {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
+        //public string GetUserByName(string username)
+        //{
+        //    var mongoClient = new MongoClient("mongodb://localhost");
+        //    var database = mongoClient.GetDatabase("SearchForKnowledge");
+        //    var coll = database.GetCollection<BsonDocument>("Users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
-            return filter.ToString();
-        }
+        //    var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
+        //    return filter.ToString();
+        //}
 
         public void UpdateUser(string userName, string password, string schoolName, string country, string city)
         {
@@ -71,37 +71,43 @@ namespace SearchForKnowledge.Database
             var result = coll.DeleteOne(filter);
         }
 
-        public string LoginUser(string userName, string pass)
-        {
-            string result = "";
+        //public string LoginUser(string userName, string pass)
+        //{
+        //    string result = "";
             
-            try
-            {
-                var mongoClient = new MongoClient("mongodb://localhost");
-                var database = mongoClient.GetDatabase("SearchForKnowledge");
-                var coll = database.GetCollection<BsonDocument>("Users");
+        //    try
+        //    {
+        //        var mongoClient = new MongoClient("mongodb://localhost");
+        //        var database = mongoClient.GetDatabase("SearchForKnowledge");
+        //        var coll = database.GetCollection<BsonDocument>("Users");
 
-                var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
-                var results = coll.Find(filter).ToList().First();
-                if (BCrypt.Net.BCrypt.Verify(pass, results["password"].ToString()))
-                {
-                    result = results["userName"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                result = "";
-            }
-            return result;
-        }
-        public string GetPassword(string username) {
+        //        var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
+        //        var results = coll.Find(filter).ToList().First();
+        //        if (BCrypt.Net.BCrypt.Verify(pass, results["password"].ToString()))
+        //        {
+        //            result = results["userName"].ToString();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result = "";
+        //    }
+        //    return result;
+        //}
+        public string GetPassword(string username)
+        {
             var mongoClient = new MongoClient("mongodb://localhost");
             var database = mongoClient.GetDatabase("SearchForKnowledge");
             var coll = database.GetCollection<BsonDocument>("Users");
 
             var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
-            var results = coll.Find(filter).ToList().First();
-            return results["password"].ToString();
+            var results = coll.Find(filter).ToList();
+            if (results.Count() != 0)
+            {
+                var singleResult = results.First();
+                return singleResult["password"].ToString();
+            }
+            return null;
         }
         public string GetType(string username) {
             var mongoClient = new MongoClient("mongodb://localhost");
