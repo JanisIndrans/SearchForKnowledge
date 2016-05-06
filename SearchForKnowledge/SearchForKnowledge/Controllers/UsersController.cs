@@ -62,13 +62,21 @@ namespace SearchForKnowledge.Controllers
             if (!form.Username.IsEmpty())
             {
                 string passwordHash = udb.GetPassword(form.Username);
-                string password = form.Password;
-                if (BCrypt.Net.BCrypt.Verify(password, passwordHash)) {
-                    Session["userName"] = form.Username;
-                    return RedirectToRoute("Home");
+                if (passwordHash != null)
+                {
+                    string password = form.Password;
+                    if (BCrypt.Net.BCrypt.Verify(password, passwordHash))
+                    {
+                        Session["userName"] = form.Username;
+                        return RedirectToRoute("Home");
+                    }
                 }
+
             }
-            return RedirectToRoute("Login");
+            return View(new UsersLogin
+            {
+                ErrorMessage = "Username or password is wrong!"
+            });
         }
         [HttpPost]
         public ActionResult Logout()
