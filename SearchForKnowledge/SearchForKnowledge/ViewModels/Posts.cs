@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using SearchForKnowledge.Infrastructure;
 using SearchForKnowledge.Models;
 
 namespace SearchForKnowledge.ViewModels
@@ -16,7 +17,7 @@ namespace SearchForKnowledge.ViewModels
     } 
     public class PostsShowAll
     {
-        public List<Post> Posts { get; set; }
+        public PagedData<Post> Posts { get; set; }
     }
     public class PostsNew
     {
