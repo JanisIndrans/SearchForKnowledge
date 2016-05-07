@@ -1,15 +1,38 @@
-﻿@using SearchForKnowledge.ViewModels
+﻿@using SearchForKnowledge.Models
+@using SearchForKnowledge.ViewModels
 @model SearchForKnowledge.ViewModels.PostsShowAll
-@{
-    ViewBag.Title = "Index";
-}
-<div>
+
     <h2 id="recent">
         Rescent posts
     </h2>
-    @Html.Partial("_DisplayPosts", Model.Posts)
-    <br/>
+@Html.Partial("_DisplayPosts", Model.Posts.Posts)
+<br/>
 
+<div class="btn-group pull-right">
+
+    @if (Model.Posts.HasPreviousPage)
+    {
+        <a href="@Url.Action("Index", new {page = Model.Posts.PreviousPage})" class="btn btn-primary btn-sm">
+            <i class="glyphicon glyphicon-chevron-left"> Previous Page</i>
+        </a>
+    }
+    else{
+        <a href="#" class="btn btn-default btn-disabled btn-sm">
+            <i class="glyphicon glyphicon-chevron-left"> Previous Page</i>
+        </a>
+    }
+    @if (Model.Posts.HasNextPage)
+    {
+        <a href="@Url.Action("Index", new {page = Model.Posts.NextPage})" class="btn btn-primary btn-sm">
+            Next Page <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+    else
+    {
+        <a href="#" class="btn btn-default btn-disabled btn-sm">
+            Next Page <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
 
 </div>
 

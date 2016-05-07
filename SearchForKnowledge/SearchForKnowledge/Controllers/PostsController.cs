@@ -6,19 +6,27 @@ using SearchForKnowledge.Database;
 using System;
 using System.IO;
 using Microsoft.Ajax.Utilities;
+using SearchForKnowledge.Infrastructure;
 
 namespace SearchForKnowledge.Controllers
 {
     public class PostsController : Controller
     {
-        public ActionResult Index()
+
+        private const int  PostsPerPage = 14;
+
+
+        public ActionResult Index(int page = 1)
         {
-            PostDb db =new PostDb();
-            List<Post> posts = db.GetAllPosts();
+            PostDb db = new PostDb();
+            //List<Post> posts = db.GetAllPosts();
+            var totalPostCount = db.CountAllPosts();
+            var currentPostPage = db.GetCurrentPagePosts(page, PostsPerPage);
+            
 
             return View(new PostsShowAll
             {
-                Posts = posts
+                Posts = new PagedData<Post>(currentPostPage, currentPostPage, totalPostCount, page, PostsPerPage)
 
             });
         }
