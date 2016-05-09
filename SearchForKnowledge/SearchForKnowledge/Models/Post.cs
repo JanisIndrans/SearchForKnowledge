@@ -14,10 +14,13 @@ namespace SearchForKnowledge.Models
         public string Author { get; set; }
         public string PicturePath { get; set; }
         public int UserId { get; set; }
-        public int CategoryId { get; set; }
+        public CategoryName CategoryId { get; set; }
         public string Description { get; set; }
 
-        public Post(string BookTitle, string Author, string PicturePath, int UserId, int CategoryId, string Description) 
+        public Post() { 
+        }
+
+        public Post(string BookTitle, string Author, string PicturePath, int UserId, CategoryName CategoryId, string Description) 
         {
             this.BookTitle = BookTitle;
             this.Author = Author;
@@ -25,6 +28,15 @@ namespace SearchForKnowledge.Models
             this.UserId = UserId;
             this.CategoryId = CategoryId;
             this.Description = Description;
+        }
+
+        public enum CategoryName {
+            Programming,
+            Design,
+            Database,
+            Security,
+            Web,
+            SystemAdministration
         }
     }
 }

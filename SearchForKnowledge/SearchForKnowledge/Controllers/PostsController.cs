@@ -15,7 +15,6 @@ namespace SearchForKnowledge.Controllers
 
         private const int  PostsPerPage = 14;
 
-
         public ActionResult Index(int page = 1)
         {
             PostDb db = new PostDb();
@@ -74,18 +73,24 @@ namespace SearchForKnowledge.Controllers
         public ActionResult CreatePost(PostsNew form)
         {
             PostDb db = new PostDb();
-            string imgPath = "";
+            //string imgPath = "";
             if (form.ImgFile != null)
             {
+
                 string pathToSave = Server.MapPath("~/Content/Images/UserImages/");
                 string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(form.ImgFile.FileName);
                 form.ImgFile.SaveAs(Path.Combine(pathToSave, newFileName));
-                imgPath = "/content/images/UserImages/" + newFileName;
+               
+                Post post = new Post();
+                post.BookTitle = form.BookTitle;
+                post.Author = form.Author;
+                post.PicturePath = "/content/images/UserImages/" + newFileName;
+                post.UserId = form.UserId;
+                post.CategoryId = (SearchForKnowledge.Models.Post.CategoryName)form.CategoryId;
+                post.Description = form.Description;
+
+                db.CreatePost(post);
             }
-
-
-            db.CreatePost(form.BookTitle, form.Author, imgPath, Int32.Parse(form.UserId), Int32.Parse(form.CategoryId), form.Description);
-            
             return RedirectToRoute("Home");
         }
 
@@ -99,7 +104,7 @@ namespace SearchForKnowledge.Controllers
             });
         }
         [HttpPost]
-        public ActionResult Category(string categoryName)
+        public ActionResult Category(SearchForKnowledge.Models.Post.CategoryName categoryName)
         {
             PostDb db = new PostDb();
             List<Post> posts = db.GetPostsByCategory(categoryName);

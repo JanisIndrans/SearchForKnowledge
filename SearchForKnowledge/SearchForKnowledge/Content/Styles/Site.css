@@ -297,6 +297,7 @@ body {
     display:compact;
     padding:0px;
     margin: 0px;
+    margin-bottom: 8px;
     text-align: start;
     font-family: Verdana;
     font-size: 30px;
@@ -374,4 +375,9 @@ body {
     resize:horizontal;
     margin-bottom:5px;
     width: 500px;
+}
+
+#dropDownCategory {
+    font-style:normal;
+    font-size: 15px;
 }

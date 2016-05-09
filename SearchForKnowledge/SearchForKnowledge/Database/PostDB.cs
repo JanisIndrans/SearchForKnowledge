@@ -24,18 +24,18 @@ namespace SearchForKnowledge.Database
 
         public string GetPostByName(string bookTitle)
         {
-            var coll = GetDatabase().GetCollection<BsonDocument>("Posts");
+            var coll = GetDatabase().GetCollection<Post>("Posts");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", bookTitle);
+            var filter = Builders<Post>.Filter.Eq("BookTitle", bookTitle);
             return filter.ToString();
         }
 
         public void UpdatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
         {
-            var coll = GetDatabase().GetCollection<BsonDocument>("Posts");
+            var coll = GetDatabase().GetCollection<Post>("Posts");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", bookTitle);
-            var update = Builders<BsonDocument>.Update
+            var filter = Builders<Post>.Filter.Eq("BookTitle", bookTitle);
+            var update = Builders<Post>.Update
                 .Set("BookTitle", bookTitle)
                 .Set("Author", author)
                 .Set("PicturePath", picturePath)
@@ -45,11 +45,11 @@ namespace SearchForKnowledge.Database
             var result = coll.UpdateOne(filter, update);
         }
 
-        public void CreatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
+       /* public void CreatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
         {
-            var coll = GetDatabase().GetCollection<BsonDocument>("Posts");
+            var coll = GetDatabase().GetCollection<Post>("Posts");
 
-            var document = new BsonDocument
+            var document = new Post
                 {
                     {"BookTitle",bookTitle},
                     {"Author",author},
@@ -59,13 +59,21 @@ namespace SearchForKnowledge.Database
                     {"Description", description}
                 };
             coll.InsertOne(document);
+        }*/
+
+        public void CreatePost(Post post)
+        {
+            var coll = GetDatabase().GetCollection<Post>("Posts");
+            
+                coll.InsertOne(post);
+             
         }
 
         public void RemovePost(string bookTitle)
         {
-            var coll = GetDatabase().GetCollection<BsonDocument>("Posts");
+            var coll = GetDatabase().GetCollection<Post>("Posts");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("BookTitle", bookTitle);
+            var filter = Builders<Post>.Filter.Eq("BookTitle", bookTitle);
             var result = coll.DeleteOne(filter);
         }
 
@@ -109,14 +117,14 @@ namespace SearchForKnowledge.Database
         //    return result = coll.Find(filter).ToList();
         //}
 
-        public List<Post> GetPostsByCategory(string categoryName)
+        public List<Post> GetPostsByCategory(SearchForKnowledge.Models.Post.CategoryName categoryName)
         {
             var result = new List<Post>();
 
 
             var coll = GetDatabase().GetCollection<Post>("Posts");
 
-            var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, 1);
+            var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, categoryName);
             return result = coll.Find(filter).ToList();
         }
 
