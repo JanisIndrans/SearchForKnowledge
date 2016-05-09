@@ -118,7 +118,7 @@ C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchF
 C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.xml
 C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\bin\System.Web.WebPages.Razor.xml
-C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
 C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.dll
 C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.pdb
 C:\Users\Janix\Desktop\Project 4th semester\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
+C:\Users\Viktor\Documents\Visual Studio 2013\Projects\SearchForKnowledge\SearchForKnowledge\SearchForKnowledge\obj\Debug\SearchForKnowledge.csprojResolveAssemblyReference.cache
