@@ -1,12 +1,7 @@
 ﻿using SearchForKnowledge.Models;
 using SearchForKnowledge.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
-using SearchForKnowledge;
 using SearchForKnowledge.Database;
 
 namespace SearchForKnowledge.Controllers
@@ -27,18 +22,18 @@ namespace SearchForKnowledge.Controllers
         {
             User user = new User();
             user.SetPassword(form.Password);
-            string hash = user.Password;
+            user.Type = "user";
+            user.Username = form.Username;
+            user.Country = form.Country;
+            user.City = form.City;
+            user.SchoolName = form.SchoolName;
             UserDb db = new UserDb();
-            if (!db.AddUser(form.Username, hash, form.SchoolName, form.Country, form.City, form.Type))
+
+            if (!db.AddUser(user))
             {
                 return View(new UsersNew
                 {
                     DuplicateUserMessage = "This username already exists in database. Please choose a different one.",
-                    //City = form.City,
-                    //Password = form.Password,
-                    //ConfirmPassword = form.ConfirmPassword,
-                    //Country = form.Country,
-                    //SchoolName = form.SchoolName
                 });
             }
             Session["userName"] = form.Username;
@@ -57,17 +52,15 @@ namespace SearchForKnowledge.Controllers
         [HttpPost]
         public ActionResult Login(UsersLogin form)
         {
-            UserDb udb = new UserDb();
+            UserDb db = new UserDb();
 
             if (!form.Username.IsEmpty())
             {
-                string passwordHash = udb.GetPassword(form.Username);
-                if (passwordHash != null)
+                if (db.GetUserByUsername(form.Username) != null)
                 {
-                    string password = form.Password;
-                    if (BCrypt.Net.BCrypt.Verify(password, passwordHash))
+                    if (BCrypt.Net.BCrypt.Verify(form.Password, db.GetUserByUsername(form.Username).Password))
                     {
-                        Session["userName"] = form.Username;
+                        Session["username"] = form.Username;
                         return RedirectToRoute("Home");
                     }
                 }
@@ -88,13 +81,12 @@ namespace SearchForKnowledge.Controllers
         public ActionResult AdminPage()
         {
             UserDb udb = new UserDb();
-            if (udb.GetType(Session["userName"].ToString()) == "Admin")
+            if (udb.GetUserByUsername(Session["username"].ToString()).Type == "Admin")
             {
                 return View(new AdminPage { });
             }
             else
-            {
-                
+            {          
                 return RedirectToRoute("Home");
             }
         }

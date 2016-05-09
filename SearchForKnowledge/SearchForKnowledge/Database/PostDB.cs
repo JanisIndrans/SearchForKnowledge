@@ -17,8 +17,8 @@ namespace SearchForKnowledge.Database
 
         public IMongoDatabase GetDatabase()
         {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            return mongoClient.GetDatabase("SearchForKnowledge");
+            var mongoClient = new MongoClient("mongodb://janis:secret@ds017582.mlab.com:17582/searchforknowledge");
+            return mongoClient.GetDatabase("searchforknowledge");
         }
 
 
