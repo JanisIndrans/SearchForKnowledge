@@ -118,12 +118,14 @@ body {
     padding-right: 5px;
     color: white;
     border-radius: 10px;
+    font-weight:bold;
 
 }
 #sidebarContent {
     /*padding: 20px;
     text-align: left;*/
     font-size: 25px;
+    font-weight:bold;
 
 }
 #sidebarContent button {
