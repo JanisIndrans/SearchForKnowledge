@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Web;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using SearchForKnowledge.Models;
@@ -11,122 +8,78 @@ namespace SearchForKnowledge.Database
 {
     class UserDb
     {
-        public string GetUserByName(string username)
-        {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
-            return filter.ToString();
+        public IMongoDatabase GetDatabase()
+        {
+            var mongoClient = new MongoClient("mongodb://janis:secret@ds017582.mlab.com:17582/searchforknowledge");
+            return mongoClient.GetDatabase("searchforknowledge");
         }
 
-        public void UpdateUser(string userName, string password, string schoolName, string country, string city)
+        public void UpdateUser(string username, string password, string schoolName, string country, string city)
         {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
+            var coll = GetDatabase().GetCollection<User>("Users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
-            var update = Builders<BsonDocument>.Update
-                //.Set("userName", userName) -----we don't need this as it is not Recomended to change
-                .Set("password",password)
-                .Set("schoolName", schoolName)
-                .Set("country", country)
-                .Set("city", city);
+            var filter = Builders<User>.Filter.Eq("Username", username);
+            var update = Builders<User>.Update
+                .Set("Password",password)
+                .Set("SchoolName", schoolName)
+                .Set("Country", country)
+                .Set("City", city);
 
 
             var result = coll.UpdateOne(filter, update);
         }
 
-        public bool AddUser(string userName, string password, string schoolName, string country, string city, string type)
+        public bool AddUser(User user)
         {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
-            if (!CheckIfUsernameExist(userName))
+            var coll = GetDatabase().GetCollection<User>("Users");
+            if (GetUserByUsername(user.Username) == null)
             {
-                var document = new BsonDocument
-                {
-                    {"userName", userName},
-                    {"password", password},
-                    {"schoolName", schoolName},
-                    {"country", country},
-                    {"city", city},
-                    {"type", "user"}
-                };
-                coll.InsertOne(document);
+                coll.InsertOne(user);
                 return true;
             }
             return false;
         }
 
-        public void RemoveUser(string userName)
+        public bool RemoveUser(string username)
         {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
+            var coll = GetDatabase().GetCollection<User>("Users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
-            var result = coll.DeleteOne(filter);
+            var filter = Builders<User>.Filter.Eq("Username", username);
+
+            return coll.DeleteOne(filter).IsAcknowledged;
+
         }
 
-        public string LoginUser(string userName, string pass)
-        {
-            string result = "";
-            
-            try
-            {
-                var mongoClient = new MongoClient("mongodb://localhost");
-                var database = mongoClient.GetDatabase("SearchForKnowledge");
-                var coll = database.GetCollection<BsonDocument>("Users");
+        //public string GetPassword(string username)
+        //{
+        //    var coll = GetDatabase().GetCollection<User>("Users");
 
-                var filter = Builders<BsonDocument>.Filter.Eq("userName", userName);
-                var results = coll.Find(filter).ToList().First();
-                if (BCrypt.Net.BCrypt.Verify(pass, results["password"].ToString()))
-                {
-                    result = results["userName"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                result = "";
-            }
+        //    var filter = Builders<User>.Filter.Eq("Username", username);
+        //    var result = coll.Find(filter).FirstOrDefault();
+        //    if (result != null)
+        //    {
+        //        return result.Password;
+        //    }
+        //    return null;
+        //}
+
+        public User GetCurrentUser()
+        {
+            var coll = GetDatabase().GetCollection<User>("Users");
+
+            var filter = Builders<User>.Filter.Eq("Username", HttpContext.Current.User.Identity.Name);
+            var result = coll.Find(filter).FirstOrDefault();
+
             return result;
         }
-        public string GetPassword(string username) {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
-            var results = coll.Find(filter).ToList().First();
-            return results["password"].ToString();
-        }
-        public string GetType(string username) {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
-            var coll = database.GetCollection<BsonDocument>("Users");
-
-            var filter = Builders<BsonDocument>.Filter.Eq("userName", username);
-            var results = coll.Find(filter).ToList().First();
-            return results["type"].ToString();
-        }
-
-        public bool CheckIfUsernameExist(string userName)
+        public User GetUserByUsername(string username)
         {
-            var mongoClient = new MongoClient("mongodb://localhost");
-            var database = mongoClient.GetDatabase("SearchForKnowledge");
+            var coll = GetDatabase().GetCollection<User>("Users");
+            var filter = Builders<User>.Filter.Eq("Username", new BsonRegularExpression("/^" + username + "$/i"));
 
-            var coll = database.GetCollection<BsonDocument>("Users");
-            var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Regex("userName", new BsonRegularExpression("/^" + userName + "$/i"));
-
-            if (coll.Find(filter).Count() != 0)
-            {
-                return true;
-            }
-            return false;
+            return coll.Find(filter).FirstOrDefault();
         }
     }
 }

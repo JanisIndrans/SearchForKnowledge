@@ -1,6 +1,6 @@
-﻿using System;
-using System.ComponentModel;
+﻿
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace SearchForKnowledge.Models
@@ -17,7 +17,7 @@ namespace SearchForKnowledge.Models
         public int CategoryId { get; set; }
         public string Description { get; set; }
 
-        public Post(string BookTitle, string Author, string PicturePath, int UserId, int CategoryId, string description) 
+        public Post(string BookTitle, string Author, string PicturePath, int UserId, int CategoryId, string Description) 
         {
             this.BookTitle = BookTitle;
             this.Author = Author;

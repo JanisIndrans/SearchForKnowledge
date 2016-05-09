@@ -160,6 +160,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\PagedData.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +188,9 @@
     <Content Include="Views\Users\ShowHash.cshtml" />
     <Content Include="Views\Users\AdminPage.cshtml" />
     <Content Include="Views\Users\WelcomePage.cshtml" />
+    <Content Include="Views\Shared\_DisplayPosts.cshtml" />
+    <Content Include="Views\Posts\SearchPosts.cshtml" />
+    <Content Include="Views\Posts\Category.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,20 @@
+﻿@using SearchForKnowledge.ViewModels
+@model SearchForKnowledge.ViewModels.PostsSelection
+@{
+    ViewBag.Title = "Category";
+}
+                   
+
+<div>
+    <h2 id="recent">
+        @Model.NameOfCategory
+    </h2>
+    <div id="error">
+        @Model.ErrorMessage
+    </div>
+
+    @Html.Partial("_DisplayPosts", Model.Posts)
+
+    <br />
+
+</div>

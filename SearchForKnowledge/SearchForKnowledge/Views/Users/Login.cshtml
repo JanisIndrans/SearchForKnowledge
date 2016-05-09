@@ -16,6 +16,9 @@
         </div>
         <div class="panel-body">
             @Html.ValidationSummary()
+            <div id="ErrorMessage">
+                @Model.ErrorMessage
+            </div>
             <div class="form-group-lg">
                 <div class="panelInput">
                     @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input, loginInfo", placeholder="Username"})

@@ -49,6 +49,7 @@ body {
     transition: all 1000ms ease;
 }
 #search {
+
     float: right;
 	width: 200px;
 	height: 28px;
@@ -120,20 +121,24 @@ body {
 
 }
 #sidebarContent {
-    padding: 20px;
-    text-align: left;
+    /*padding: 20px;
+    text-align: left;*/
     font-size: 25px;
+
 }
-#sidebarContent a {
-    border-radius: 4px;
-    color: white;
-    padding: 15px 32px;
+#sidebarContent button {
+    border-radius: 5px;
+    /*color: white;
+    padding: 15px 32px;*/
     text-align: center;
-    text-decoration: none;
+    width: 99%;
+    margin: 4px;
+    position: relative;
+    /*text-decoration: none;
     display: table-cell;
     font-size: 17px;
     margin: 2px 2px;
-    cursor: pointer;
+    cursor: pointer;*/
 }
 #sidebarContent a:hover {
     color: #336699;
