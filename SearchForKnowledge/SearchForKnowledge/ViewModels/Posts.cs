@@ -28,9 +28,9 @@ namespace SearchForKnowledge.ViewModels
         [Required]
         public HttpPostedFileBase ImgFile { get; set; }
         [Required, Display(Name = "User Id")]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         [Required, Display(Name = "Category of the book")]
-        public string CategoryId { get; set; }
+        public SearchForKnowledge.Models.Post.CategoryName CategoryId { get; set; }
         [Required]
         public string Description { get; set; }
     }
@@ -44,7 +44,7 @@ namespace SearchForKnowledge.ViewModels
     public class PostsSelection
     {
         public string ErrorMessage { get; set; }
-        public string NameOfCategory { get; set; }
+        public SearchForKnowledge.Models.Post.CategoryName NameOfCategory { get; set; }
         public List<Post> Posts { get; set; } 
     }
 }
