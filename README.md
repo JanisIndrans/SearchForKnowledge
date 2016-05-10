@@ -1,2 +1,3 @@
 # SearchForKnowledge
 Project for the 4th semester
+Website implemented by 3 developers to ease the burden of accessing the study material. Main goal: To create website where students are able to upload their recommended books (only basic information of it), assign tags for better response times and sorting while searching. Developed in C# language, using MVC model, No-Sql database (MongoDB), bootstrap, etc. Huge leap from previous projects as Search for knowledge was implemented for our actual use. Also, the technologies used were not covered during the lectures, developers had to figure out everything on their own. 
