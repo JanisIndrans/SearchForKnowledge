@@ -5,7 +5,11 @@ using SearchForKnowledge.ViewModels;
 using SearchForKnowledge.Database;
 using System;
 using System.IO;
+using System.Web;
 using Microsoft.Ajax.Utilities;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using SearchForKnowledge.Infrastructure;
 
 namespace SearchForKnowledge.Controllers
@@ -72,19 +76,21 @@ namespace SearchForKnowledge.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult CreatePost(PostsNew form)
         {
+
+            //test
+            //test
+
+
             PostDb db = new PostDb();
             //string imgPath = "";
             if (form.ImgFile != null)
             {
-
-                string pathToSave = Server.MapPath("~/Content/Images/UserImages/");
-                string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(form.ImgFile.FileName);
-                form.ImgFile.SaveAs(Path.Combine(pathToSave, newFileName));
+                string path = AddImage(form.ImgFile);
                
                 Post post = new Post();
                 post.BookTitle = form.BookTitle;
                 post.Author = form.Author;
-                post.PicturePath = "/content/images/UserImages/" + newFileName;
+                post.PicturePath = path;
                 post.UserId = form.UserId;
                 post.CategoryId = (SearchForKnowledge.Models.Post.CategoryName)form.CategoryId;
                 post.Description = form.Description;
@@ -104,16 +110,19 @@ namespace SearchForKnowledge.Controllers
             });
         }
         [HttpPost]
-        public ActionResult Category(SearchForKnowledge.Models.Post.CategoryName categoryName)
+        public ActionResult Category(SearchForKnowledge.Models.Post.CategoryName categoryName, int page = 1)
         {
             PostDb db = new PostDb();
-            List<Post> posts = db.GetPostsByCategory(categoryName);
-            if (posts != null)
+            
+            var postCount = db.CountCategoryPosts(categoryName);
+            //var currentPostPage = db.GetCurrentPagePosts(page, PostsPerPage);
+            List<Post> currentPostPage = db.GetPostsByCategory(categoryName, page, PostsPerPage);
+            if (currentPostPage != null)
             {
                 return View(new PostsSelection()
                 {
 
-                    Posts = posts,
+                    Posts = new PagedData<Post>(currentPostPage, currentPostPage, postCount, page, PostsPerPage),
                     NameOfCategory = categoryName
                    
 
@@ -122,8 +131,36 @@ namespace SearchForKnowledge.Controllers
             return View(new PostsSelection()
             {
                 ErrorMessage = "Sorry nothing was found with this selection",
-                Posts = new List<Post>()
+                Posts = new PagedData<Post>()
             });
+        }
+
+        public string AddImage(HttpPostedFileBase image)
+        {
+            // Parse the connection string and return a reference to the storage account.
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Retrieve a reference to a container.
+            CloudBlobContainer container = blobClient.GetContainerReference("searchforknowledge");
+
+            // Create the container if it doesn't already exist.
+            container.CreateIfNotExists();
+
+            container.SetPermissions(
+             new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+
+            // Retrieve reference to a blob named "myblob".
+            string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.FileName);
+
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(newFileName);
+            blockBlob.Properties.ContentType = image.ContentType;
+            blockBlob.UploadFromStream(image.InputStream);
+
+            var uriBuilder = new UriBuilder(blockBlob.Uri);
+            uriBuilder.Scheme = "https";
+            return uriBuilder.ToString();
         }
 
         }

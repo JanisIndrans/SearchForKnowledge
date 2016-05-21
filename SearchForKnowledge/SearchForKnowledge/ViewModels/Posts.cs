@@ -38,13 +38,13 @@ namespace SearchForKnowledge.ViewModels
     public class PostsSearch
     {
         public string ErrorMessage { get; set; }
-        public List<Post> Posts { get; set; } 
+        public PagedData<Post> Posts { get; set; } 
     }
 
     public class PostsSelection
     {
         public string ErrorMessage { get; set; }
         public SearchForKnowledge.Models.Post.CategoryName NameOfCategory { get; set; }
-        public List<Post> Posts { get; set; } 
+        public PagedData<Post> Posts { get; set; } 
     }
 }

@@ -117,15 +117,27 @@ namespace SearchForKnowledge.Database
         //    return result = coll.Find(filter).ToList();
         //}
 
-        public List<Post> GetPostsByCategory(SearchForKnowledge.Models.Post.CategoryName categoryName)
+        public List<Post> GetPostsByCategory(SearchForKnowledge.Models.Post.CategoryName categoryName, int page, int postsPerPage)
         {
-            var result = new List<Post>();
+            //var result = new List<Post>();
 
 
             var coll = GetDatabase().GetCollection<Post>("Posts");
 
             var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, categoryName);
-            return result = coll.Find(filter).ToList();
+            //return result = coll.Find(filter).ToList();
+
+            return coll.Find(filter)
+                .Skip((page - 1) * postsPerPage)
+                .Limit(postsPerPage)
+                .ToList();
+        }
+
+        public int CountCategoryPosts(SearchForKnowledge.Models.Post.CategoryName categoryName)
+        {
+            var coll = GetDatabase().GetCollection<Post>("Posts");
+            var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, categoryName);
+            return coll.Find(filter).ToList().Count();
         }
 
         public int CountAllPosts()
@@ -145,6 +157,7 @@ namespace SearchForKnowledge.Database
                 .Limit(postsPerPage)
                 .ToList();
         } 
+
 
         
     }
