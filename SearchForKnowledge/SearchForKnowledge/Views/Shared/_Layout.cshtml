@@ -19,13 +19,13 @@
     </div>
 
 
-@using (Html.BeginForm("SearchPosts", "Posts"))
+@using (Html.BeginForm())
 {
     <div id="search">
-        <div class="input-group">
+        <div class="input-group" id="searchForString">
             <input type="text" name="searchString" class="form-control" placeholder="Search by title...">
             <span class="input-group-btn">
-                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                <a href="@Url.Action("SearchPosts", "Posts")" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
             </span>
         </div>
     </div>
@@ -92,24 +92,24 @@
         {
             <div id="selection">
                 <div id="sidebarContent">
-                    <button class="btn btn-info" type="submit" name="categoryName" value="Programming">Programming</button>
+                    <button class="btn btn-info" type="submit" name="category" value="Programming">Programming</button>
                 </div>
 
                 <div id="sidebarContent">
-                    <button class="btn btn-info" type="submit" name="categoryName" value="Design">Design</button>
+                    <button class="btn btn-info" type="submit" name="category" value="Design">Design</button>
                 </div>
 
                 <div id="sidebarContent">
-                    <button class="btn btn-info" type="submit" name="categoryName" value="Database">Database</button>
+                    <button class="btn btn-info" type="submit" name="category" value="Database">Database</button>
                 </div>
                 <div id="sidebarContent">
-                    <button class="btn btn-info" type="submit" name="categoryName" value="Security">Security</button>
+                    <button class="btn btn-info" type="submit" name="category" value="Security">Security</button>
                 </div>
                 <div id="sidebarContent">
-                    <button class="btn btn-info" type="submit" name="categoryName" value="Web">Web</button>
+                    <button class="btn btn-info" type="submit" name="category" value="Web">Web</button>
                 </div>
                 <div id="sidebarContent">
-                    <button class="btn btn-info" type="submit" name="categoryName" value="SystemAdministration">System Administration</button>
+                    <button class="btn btn-info" type="submit" name="category" value="SystemAdministration">System Administration</button>
                 </div>
             </div>
         }
