@@ -22,7 +22,8 @@ namespace SearchForKnowledge
                 .Include("~/scripts/jquery-2.2.2.min.js")
                 .Include("~/scripts/jquery-2.2.3.min.js")
                 .Include("~/scripts/ImgZoom.js")
-                .Include("~/scripts/sweetalert.min.js"));
+                .Include("~/scripts/sweetalert.min.js")
+                .Include("~/scripts/Search.js"));
         }
     }
 }

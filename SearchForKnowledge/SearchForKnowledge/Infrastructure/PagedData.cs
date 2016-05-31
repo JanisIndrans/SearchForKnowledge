@@ -20,8 +20,6 @@ namespace SearchForKnowledge.Infrastructure
         public bool HasPreviousPage { get; private set; }
 
 
-        public List<Post> Posts { get; set; } 
-
         public int NextPage
         {
             get
@@ -44,10 +42,9 @@ namespace SearchForKnowledge.Infrastructure
             }
         }
 
-        public PagedData(List<Post> posts, IEnumerable<T> currentItems, int totalCount, int page, int perPage)
+        public PagedData(IEnumerable<T> currentItems, int totalCount, int page, int perPage)
         {
             _currentItems = currentItems;
-            Posts = posts;
 
             TotalCount = totalCount;
             Page = page;

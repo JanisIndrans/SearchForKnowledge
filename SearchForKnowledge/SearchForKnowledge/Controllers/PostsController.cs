@@ -5,7 +5,12 @@ using SearchForKnowledge.ViewModels;
 using SearchForKnowledge.Database;
 using System;
 using System.IO;
+using System.Linq;
+using System.Web;
 using Microsoft.Ajax.Utilities;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using SearchForKnowledge.Infrastructure;
 
 namespace SearchForKnowledge.Controllers
@@ -18,44 +23,59 @@ namespace SearchForKnowledge.Controllers
         public ActionResult Index(int page = 1)
         {
             PostDb db = new PostDb();
-            //List<Post> posts = db.GetAllPosts();
-            var totalPostCount = db.CountAllPosts();
-            var currentPostPage = db.GetCurrentPagePosts(page, PostsPerPage);
-            
+            List<Post> posts = db.GetAllPosts();
+            var totalPostCount = posts.Count;
+            var currentPostPage = GetPostsForPage(posts, page);
 
-            return View(new PostsShowAll
+
+            return View(new PostsDisplay
             {
-                Posts = new PagedData<Post>(currentPostPage, currentPostPage, totalPostCount, page, PostsPerPage)
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage
 
             });
         }
 
-        public ActionResult SearchPosts()
+        public List<Post> GetPostsForPage(List<Post> posts, int page)
         {
-
-            return View(new PostsSearch
-            {
-
-            });
+            return posts.OrderByDescending(d => d.CreationDate)
+               .Skip((page - 1) * PostsPerPage)
+               .Take(PostsPerPage)
+               .ToList();
         }
-        [HttpPost]
-        public ActionResult SearchPosts(string searchString)
+
+
+        public ActionResult SearchPosts(string searchString = "", int page = 1)
         {
             PostDb db = new PostDb();
-            List<Post> posts = db.GetSearchResults(searchString);
-            if (posts != null)
+
+            int totalPostCount = 0;
+            var currentPostPage = new List<Post>();
+            var searchList = db.GetSearchResult(searchString);
+
+            if (searchList != null)
             {
-                return View(new PostsSearch
+                totalPostCount = searchList.Count;
+                currentPostPage = GetPostsForPage(searchList, page);
+            }
+
+            if (totalPostCount != 0)
+            {
+                return View(new PostsDisplay
                 {
-                    
-                    Posts = posts
+
+                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    SearchString = searchString
 
                 });
             }
-            return View(new PostsSearch
+
+            return View(new PostsDisplay
             {
                 ErrorMessage = "Sorry nothing was found with this title",
-                Posts = new List<Post>()
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage
             });
         }
 
@@ -72,58 +92,97 @@ namespace SearchForKnowledge.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult CreatePost(PostsNew form)
         {
+
+
             PostDb db = new PostDb();
-            //string imgPath = "";
+
+            List<Post> list = new List<Post>();
+            string path = "";
             if (form.ImgFile != null)
             {
 
-                string pathToSave = Server.MapPath("~/Content/Images/UserImages/");
-                string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(form.ImgFile.FileName);
-                form.ImgFile.SaveAs(Path.Combine(pathToSave, newFileName));
-               
-                Post post = new Post();
-                post.BookTitle = form.BookTitle;
-                post.Author = form.Author;
-                post.PicturePath = "/content/images/UserImages/" + newFileName;
-                post.UserId = form.UserId;
-                post.CategoryId = (SearchForKnowledge.Models.Post.CategoryName)form.CategoryId;
-                post.Description = form.Description;
-
-                db.CreatePost(post);
+                path = AddImage(form.ImgFile);
             }
+
+            Post post = new Post
+            {
+                BookTitle = form.BookTitle,
+                Author = form.Author,
+                PicturePath = path,
+                UserId = form.UserId,
+                CategoryId = form.CategoryId,
+                Description = form.Description,
+                CreationDate = DateTime.Now                
+            };
+               
+            db.CreatePost(post);
+            
             return RedirectToRoute("Home");
         }
 
 
-        public ActionResult Category()
-        {
-
-            return View(new PostsSelection()
-            {
-
-            });
-        }
-        [HttpPost]
-        public ActionResult Category(SearchForKnowledge.Models.Post.CategoryName categoryName)
+        public ActionResult Category(Post.CategoryName category, int page = 1)
         {
             PostDb db = new PostDb();
-            List<Post> posts = db.GetPostsByCategory(categoryName);
-            if (posts != null)
+
+            int totalPostCount = 0;
+            var currentPostPage = new List<Post>();
+            var list = db.GetPostsByCategory(category);
+
+            if (list != null)
             {
-                return View(new PostsSelection()
+                totalPostCount = list.Count;
+                currentPostPage = GetPostsForPage(list, page);
+            }
+
+            if (totalPostCount != 0)
+            {
+                return View(new PostsCategory
                 {
 
-                    Posts = posts,
-                    NameOfCategory = categoryName
-                   
+                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    NameOfCategory = category
 
                 });
             }
-            return View(new PostsSelection()
+
+            return View(new PostsCategory
             {
-                ErrorMessage = "Sorry nothing was found with this selection",
-                Posts = new List<Post>()
+                ErrorMessage = "Sorry nothing was found in this Category",
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage,
+                NameOfCategory = category
             });
+            
+        }
+
+        public string AddImage(HttpPostedFileBase image)
+        {
+            // Parse the connection string and return a reference to the storage account.
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Retrieve a reference to a container.
+            CloudBlobContainer container = blobClient.GetContainerReference("searchforknowledge");
+
+            // Create the container if it doesn't already exist.
+            container.CreateIfNotExists();
+
+            container.SetPermissions(
+             new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+
+            // Retrieve reference to a blob named "myblob".
+            string newFileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.FileName);
+
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(newFileName);
+            blockBlob.Properties.ContentType = image.ContentType;
+            blockBlob.UploadFromStream(image.InputStream);
+
+            var uriBuilder = new UriBuilder(blockBlob.Uri);
+            uriBuilder.Scheme = "https";
+            return uriBuilder.ToString();
         }
 
         }

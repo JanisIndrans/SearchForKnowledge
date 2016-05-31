@@ -14,61 +14,55 @@ namespace SearchForKnowledge.Database
 {
     public class PostDb {
 
-
+        //Returns Mongo database
         public IMongoDatabase GetDatabase()
         {
             var mongoClient = new MongoClient("mongodb://janis:secret@ds017582.mlab.com:17582/searchforknowledge");
             return mongoClient.GetDatabase("searchforknowledge");
         }
 
-
-        public string GetPostByName(string bookTitle)
+        //Returns the Mongo collection creating Post objects
+        public IMongoCollection<Post> GetCollectionAsPost()
         {
-            var coll = GetDatabase().GetCollection<Post>("Posts");
-
-            var filter = Builders<Post>.Filter.Eq("BookTitle", bookTitle);
-            return filter.ToString();
+            return GetDatabase().GetCollection<Post>("Posts");
         }
 
-        public void UpdatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
+
+        //Returns the filter by book title
+        public FilterDefinition<Post> GetFilterByBookTitle(string bookTitle)
+        {
+            var filter = Builders<Post>.Filter.Eq("BookTitle", bookTitle);
+            return filter;
+        }
+
+
+        //Updates one post
+        public bool UpdatePost(Post post)
         {
             var coll = GetDatabase().GetCollection<Post>("Posts");
 
-            var filter = Builders<Post>.Filter.Eq("BookTitle", bookTitle);
             var update = Builders<Post>.Update
-                .Set("BookTitle", bookTitle)
-                .Set("Author", author)
-                .Set("PicturePath", picturePath)
-                .Set("UserId", userId)
-                .Set("CategoryId", categoryId)
-                .Set("Description", description);
-            var result = coll.UpdateOne(filter, update);
+                .Set("BookTitle", post.BookTitle)
+                .Set("Author", post.Author)
+                .Set("PicturePath", post.PicturePath)
+                .Set("UserId", post.UserId)
+                .Set("CategoryId", post.CategoryId)
+                .Set("Description", post.Description)
+                .Set("CreationDate", post.CreationDate);
+
+            var result = coll.UpdateOne(GetFilterByBookTitle(post.BookTitle), update);
+
+            return result.IsAcknowledged;
         }
-
-       /* public void CreatePost(string bookTitle, string author, string picturePath, int userId, int categoryId, string description)
-        {
-            var coll = GetDatabase().GetCollection<Post>("Posts");
-
-            var document = new Post
-                {
-                    {"BookTitle",bookTitle},
-                    {"Author",author},
-                    {"PicturePath",picturePath},
-                    {"UserId",userId},
-                    {"CategoryId", categoryId},
-                    {"Description", description}
-                };
-            coll.InsertOne(document);
-        }*/
-
+        //Creates post
         public void CreatePost(Post post)
         {
             var coll = GetDatabase().GetCollection<Post>("Posts");
-            
-                coll.InsertOne(post);
-             
-        }
 
+            coll.InsertOne(post);
+            
+        }
+        //Removes post from DB
         public void RemovePost(string bookTitle)
         {
             var coll = GetDatabase().GetCollection<Post>("Posts");
@@ -77,77 +71,39 @@ namespace SearchForKnowledge.Database
             var result = coll.DeleteOne(filter);
         }
 
-        public List<Post> GetAllPosts()
+        //Finds all posts by Book title in matter that it checks if any book title contains the given string ignorig case sensetivity
+        public List<Post> GetSearchResult(string bookTitle)
         {
-            var coll = new List<Post>(GetDatabase().GetCollection<Post>("Posts").AsQueryable<Post>());
+            var coll = GetCollectionAsPost()
+                .Find(x=>x.BookTitle.ToLower()
+                    .Contains(bookTitle.ToLower()))
+                    .ToList();
 
-            return coll;
-
-        }
-
-        public List<Post> GetSearchResults(string bookTitle)
-        {
-            var coll = new List<Post>(GetDatabase().GetCollection<Post>("Posts").AsQueryable<Post>());
-            List<Post> posts = new List<Post>();
-            if (coll.Count() != 0) { 
-                foreach (Post post in coll)
-                {
-                    if (post.BookTitle.ToLower().Contains(bookTitle.ToLower()))
-                    {
-                        posts.Add(post);
-                    }
-                }
-                if (posts.Count() != 0)
-                {
-                    return posts;  
-                }
+            if (coll.Count() != 0)
+            {
+                return coll;
             }
             return null;
         }
-
-        //public List<Post> getAllProgramming()
-        //{
-        //    var result = new List<Post>();
-
-        //    var mongoClient = new MongoClient("mongodb://localhost");
-        //    var database = mongoClient.GetDatabase("SearchForKnowledge");
-        //    var coll = database.GetCollection<Post>("Posts");
-
-        //    var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, 1);
-        //    return result = coll.Find(filter).ToList();
-        //}
-
-        public List<Post> GetPostsByCategory(SearchForKnowledge.Models.Post.CategoryName categoryName)
+        //Returns all posts for the category
+        public List<Post> GetPostsByCategory(Post.CategoryName categoryName)
         {
-            var result = new List<Post>();
+            var coll = GetCollectionAsPost()
+                 .Find(x => x.CategoryId == categoryName)
+                     .ToList();
 
-
-            var coll = GetDatabase().GetCollection<Post>("Posts");
-
-            var filter = Builders<Post>.Filter.Eq(p => p.CategoryId, categoryName);
-            return result = coll.Find(filter).ToList();
+            if (coll.Count() != 0)
+            {
+                return coll;
+            }
+            return null;
         }
-
-        public int CountAllPosts()
+        //Returns all posts from db
+        public List<Post> GetAllPosts()
         {
-            var coll = new List<Post>(GetDatabase().GetCollection<Post>("Posts").AsQueryable());
-            return coll.Count();
+          return new List<Post>(GetDatabase().GetCollection<Post>("Posts").AsQueryable());
         }
-
-        public List<Post> GetCurrentPagePosts(int page, int postsPerPage)
-        {
-            var result = new List<Post>();
-
-            var coll = GetDatabase().GetCollection<Post>("Posts");
-
-            return result = coll.Find(FilterDefinition<Post>.Empty)
-                .Skip((page - 1)*postsPerPage)
-                .Limit(postsPerPage)
-                .ToList();
-        } 
-
-        
+    
     }
-
 
 }
