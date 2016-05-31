@@ -1,11 +1,11 @@
 ﻿@using SearchForKnowledge.Models
 @using SearchForKnowledge.ViewModels
-@model SearchForKnowledge.ViewModels.PostsShowAll
+@model SearchForKnowledge.ViewModels.PostsDisplay
 
     <h2 id="recent">
         Rescent posts
     </h2>
-@Html.Partial("_DisplayPosts", Model.Posts.Posts)
+@Html.Partial("_DisplayPosts", Model.PostsToDisplay)
 <br/>
 
 <div class="btn-group pull-right">
@@ -17,7 +17,7 @@
         </a>
     }
     else{
-        <a href="#" class="btn btn-default btn-disabled btn-sm">
+        <a class="btn btn-default btn-disabled btn-sm">
             <i class="glyphicon glyphicon-chevron-left"></i>Previous Page
         </a>
     }
@@ -29,12 +29,9 @@
     }
     else
     {
-        <a href="#" class="btn btn-default btn-disabled btn-sm">
+        <a class="btn btn-default btn-disabled btn-sm">
             Next Page<i class="glyphicon glyphicon-chevron-right"></i>
         </a>
     }
 
 </div>
-
-@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>*@
-@*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@

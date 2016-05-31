@@ -6,18 +6,13 @@ using SearchForKnowledge.Models;
 
 namespace SearchForKnowledge.ViewModels
 {
-    public class PostsIndex
-    {
-        public List<Post> List { get; set; }
-    }
 
-    public class PostsShow
-    {
-        public Post Post { get; set; }
-    } 
-    public class PostsShowAll
+    public class PostsDisplay
     {
         public PagedData<Post> Posts { get; set; }
+        public List<Post> PostsToDisplay { get; set; }
+        public string ErrorMessage { get; set; }
+        public string SearchString { get; set; }
     }
     public class PostsNew
     {
@@ -30,21 +25,16 @@ namespace SearchForKnowledge.ViewModels
         [Required, Display(Name = "User Id")]
         public int UserId { get; set; }
         [Required, Display(Name = "Category of the book")]
-        public SearchForKnowledge.Models.Post.CategoryName CategoryId { get; set; }
+        public Post.CategoryName CategoryId { get; set; }
         [Required]
         public string Description { get; set; }
     }
 
-    public class PostsSearch
+    public class PostsCategory
     {
         public string ErrorMessage { get; set; }
-        public PagedData<Post> Posts { get; set; } 
-    }
-
-    public class PostsSelection
-    {
-        public string ErrorMessage { get; set; }
-        public SearchForKnowledge.Models.Post.CategoryName NameOfCategory { get; set; }
-        public PagedData<Post> Posts { get; set; } 
+        public Post.CategoryName NameOfCategory { get; set; }
+        public PagedData<Post> Posts { get; set; }
+        public List<Post> PostsToDisplay { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using SearchForKnowledge.ViewModels;
 using SearchForKnowledge.Database;
 using System;
 using System.IO;
+using System.Linq;
 using System.Web;
 using Microsoft.Ajax.Utilities;
 using Microsoft.Azure;
@@ -22,44 +23,59 @@ namespace SearchForKnowledge.Controllers
         public ActionResult Index(int page = 1)
         {
             PostDb db = new PostDb();
-            //List<Post> posts = db.GetAllPosts();
-            var totalPostCount = db.CountAllPosts();
-            var currentPostPage = db.GetCurrentPagePosts(page, PostsPerPage);
-            
+            List<Post> posts = db.GetAllPosts();
+            var totalPostCount = posts.Count;
+            var currentPostPage = GetPostsForPage(posts, page);
 
-            return View(new PostsShowAll
+
+            return View(new PostsDisplay
             {
-                Posts = new PagedData<Post>(currentPostPage, currentPostPage, totalPostCount, page, PostsPerPage)
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage
 
             });
         }
 
-        public ActionResult SearchPosts()
+        public List<Post> GetPostsForPage(List<Post> posts, int page)
         {
-
-            return View(new PostsSearch
-            {
-
-            });
+            return posts.OrderByDescending(d => d.CreationDate)
+               .Skip((page - 1) * PostsPerPage)
+               .Take(PostsPerPage)
+               .ToList();
         }
-        [HttpPost]
-        public ActionResult SearchPosts(string searchString)
+
+
+        public ActionResult SearchPosts(string searchString = "", int page = 1)
         {
             PostDb db = new PostDb();
-            List<Post> posts = db.GetSearchResults(searchString);
-            if (posts != null)
+
+            int totalPostCount = 0;
+            var currentPostPage = new List<Post>();
+            var searchList = db.GetSearchResult(searchString);
+
+            if (searchList != null)
             {
-                return View(new PostsSearch
+                totalPostCount = searchList.Count;
+                currentPostPage = GetPostsForPage(searchList, page);
+            }
+
+            if (totalPostCount != 0)
+            {
+                return View(new PostsDisplay
                 {
-                    
-                    Posts = posts
+
+                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    SearchString = searchString
 
                 });
             }
-            return View(new PostsSearch
+
+            return View(new PostsDisplay
             {
                 ErrorMessage = "Sorry nothing was found with this title",
-                Posts = new List<Post>()
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage
             });
         }
 
@@ -77,62 +93,68 @@ namespace SearchForKnowledge.Controllers
         public ActionResult CreatePost(PostsNew form)
         {
 
-            //test
-            //test
-
 
             PostDb db = new PostDb();
-            //string imgPath = "";
+
+            List<Post> list = new List<Post>();
+            string path = "";
             if (form.ImgFile != null)
             {
-                string path = AddImage(form.ImgFile);
-               
-                Post post = new Post();
-                post.BookTitle = form.BookTitle;
-                post.Author = form.Author;
-                post.PicturePath = path;
-                post.UserId = form.UserId;
-                post.CategoryId = (SearchForKnowledge.Models.Post.CategoryName)form.CategoryId;
-                post.Description = form.Description;
 
-                db.CreatePost(post);
+                path = AddImage(form.ImgFile);
             }
+
+            Post post = new Post
+            {
+                BookTitle = form.BookTitle,
+                Author = form.Author,
+                PicturePath = path,
+                UserId = form.UserId,
+                CategoryId = form.CategoryId,
+                Description = form.Description,
+                CreationDate = DateTime.Now                
+            };
+               
+            db.CreatePost(post);
+            
             return RedirectToRoute("Home");
         }
 
 
-        public ActionResult Category()
-        {
-
-            return View(new PostsSelection()
-            {
-
-            });
-        }
-        [HttpPost]
-        public ActionResult Category(SearchForKnowledge.Models.Post.CategoryName categoryName, int page = 1)
+        public ActionResult Category(Post.CategoryName category, int page = 1)
         {
             PostDb db = new PostDb();
-            
-            var postCount = db.CountCategoryPosts(categoryName);
-            //var currentPostPage = db.GetCurrentPagePosts(page, PostsPerPage);
-            List<Post> currentPostPage = db.GetPostsByCategory(categoryName, page, PostsPerPage);
-            if (currentPostPage != null)
+
+            int totalPostCount = 0;
+            var currentPostPage = new List<Post>();
+            var list = db.GetPostsByCategory(category);
+
+            if (list != null)
             {
-                return View(new PostsSelection()
+                totalPostCount = list.Count;
+                currentPostPage = GetPostsForPage(list, page);
+            }
+
+            if (totalPostCount != 0)
+            {
+                return View(new PostsCategory
                 {
 
-                    Posts = new PagedData<Post>(currentPostPage, currentPostPage, postCount, page, PostsPerPage),
-                    NameOfCategory = categoryName
-                   
+                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    NameOfCategory = category
 
                 });
             }
-            return View(new PostsSelection()
+
+            return View(new PostsCategory
             {
-                ErrorMessage = "Sorry nothing was found with this selection",
-                Posts = new PagedData<Post>()
+                ErrorMessage = "Sorry nothing was found in this Category",
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage,
+                NameOfCategory = category
             });
+            
         }
 
         public string AddImage(HttpPostedFileBase image)
