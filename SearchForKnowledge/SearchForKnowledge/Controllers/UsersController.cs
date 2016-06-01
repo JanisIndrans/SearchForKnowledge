@@ -49,7 +49,7 @@ namespace SearchForKnowledge.Controllers
             });
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Login(UsersLogin form)
         {
             UserDb db = new UserDb();
@@ -71,7 +71,7 @@ namespace SearchForKnowledge.Controllers
                 ErrorMessage = "Username or password is wrong!"
             });
         }
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
             Session.Clear();
