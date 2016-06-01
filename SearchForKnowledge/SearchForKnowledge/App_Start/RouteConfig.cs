@@ -23,6 +23,7 @@ namespace SearchForKnowledge
             routes.MapRoute("WelcomePage", "welcome", new {controller = "Users", action = "WelcomePage"});
             routes.MapRoute("Search", "search", new { controller = "Posts", action = "SearchPosts"});
             routes.MapRoute("Selection", "selection", new { controller = "Posts", action = "Category" });
+            routes.MapRoute("UserPosts", "user", new {controller = "Posts", action = "UserPosts"});
 
 
         }
