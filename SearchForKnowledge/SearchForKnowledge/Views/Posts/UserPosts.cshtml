@@ -1,0 +1,44 @@
+﻿@model SearchForKnowledge.ViewModels.PostsDisplay
+@{
+    ViewBag.Title = "UserPosts";
+}
+
+<div>
+    <h2 id="recent">
+        @Model.SearchString's Posts
+    </h2>
+
+    <div id="error">
+        @Model.ErrorMessage
+    </div>
+    @Html.Partial("_DisplayPosts", Model.PostsToDisplay)
+    <br />
+    <div class="btn-group pull-right">
+
+        @if (Model.Posts.HasPreviousPage)
+        {
+            <a href="@Url.Action("UserPosts", new {page = Model.Posts.PreviousPage, name = Model.SearchString})" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>Previous Page
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-default btn-disabled btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>Previous Page
+            </a>
+        }
+        @if (Model.Posts.HasNextPage)
+        {
+            <a href="@Url.Action("UserPosts", new { page = Model.Posts.NextPage, name = Model.SearchString })" class="btn btn-primary btn-sm">
+                Next Page<i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-default btn-disabled btn-sm">
+                Next Page<i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+
+    </div>
+</div>

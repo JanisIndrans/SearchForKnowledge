@@ -45,7 +45,7 @@ namespace SearchForKnowledge.Database
                 .Set("BookTitle", post.BookTitle)
                 .Set("Author", post.Author)
                 .Set("PicturePath", post.PicturePath)
-                .Set("UserId", post.UserId)
+                .Set("UserId", post.Username)
                 .Set("CategoryId", post.CategoryId)
                 .Set("Description", post.Description)
                 .Set("CreationDate", post.CreationDate);
@@ -102,6 +102,20 @@ namespace SearchForKnowledge.Database
         public List<Post> GetAllPosts()
         {
           return new List<Post>(GetDatabase().GetCollection<Post>("Posts").AsQueryable());
+        }
+
+
+        public List<Post> GetAllUsersPosts(string name)
+        {
+            var coll = GetCollectionAsPost()
+                 .Find(x => x.Username == name)
+                     .ToList();
+
+            if (coll.Count() != 0)
+            {
+                return coll;
+            }
+            return null;
         }
     
     }

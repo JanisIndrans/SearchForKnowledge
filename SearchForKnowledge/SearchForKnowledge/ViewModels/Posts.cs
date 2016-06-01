@@ -20,10 +20,8 @@ namespace SearchForKnowledge.ViewModels
         public string BookTitle { get; set; }
         [Required, MaxLength(128)]
         public string Author { get; set; }
-        [Required]
+        
         public HttpPostedFileBase ImgFile { get; set; }
-        [Required, Display(Name = "User Id")]
-        public int UserId { get; set; }
         [Required, Display(Name = "Category of the book")]
         public Post.CategoryName CategoryId { get; set; }
         [Required]
