@@ -14,7 +14,7 @@ namespace SearchForKnowledge.Models
         public string BookTitle { get; set; }
         public string Author { get; set; }
         public string PicturePath { get; set; }
-        public int UserId { get; set; }
+        public string Username { get; set; }
         public CategoryName CategoryId { get; set; }
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
@@ -22,12 +22,12 @@ namespace SearchForKnowledge.Models
         public Post() { 
         }
 
-        public Post(string bookTitle, string author, string picturePath, int userId, CategoryName categoryId, string description) 
+        public Post(string bookTitle, string author, string picturePath, string userName, CategoryName categoryId, string description) 
         {
             BookTitle = bookTitle;
             Author = author;
             PicturePath = picturePath;
-            UserId = userId;
+            Username = userName;
             CategoryId = categoryId;
             Description = description;
         }

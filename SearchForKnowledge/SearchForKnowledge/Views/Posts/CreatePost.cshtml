@@ -30,11 +30,6 @@
                 </div>
             </div>
             <div class="form-group-lg">
-                <div class="panelInput">
-                    @Html.TextBoxFor(u => u.UserId, new {@class = "form-control", placeholder = "Username"})
-                </div>
-            </div>
-            <div class="form-group-lg">
 
                 <div class="panelInput" id="dropDownCategory">
                     @Html.DropDownList("CategoryId", new SelectList(Enum.GetValues(typeof (SearchForKnowledge.Models.Post.CategoryName))), "Select category", new {@class = "form-control"})

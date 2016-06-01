@@ -109,7 +109,7 @@ namespace SearchForKnowledge.Controllers
                 BookTitle = form.BookTitle,
                 Author = form.Author,
                 PicturePath = path,
-                UserId = form.UserId,
+                Username = Session["userName"].ToString(),
                 CategoryId = form.CategoryId,
                 Description = form.Description,
                 CreationDate = DateTime.Now                
@@ -155,6 +155,42 @@ namespace SearchForKnowledge.Controllers
                 NameOfCategory = category
             });
             
+        }
+
+        public ActionResult UserPosts(string name, int page = 1)
+        {
+            PostDb db = new PostDb();
+
+            int totalPostCount = 0;
+            var currentPostPage = new List<Post>();
+            var list = db.GetAllUsersPosts(name);
+
+            if (list != null)
+            {
+                totalPostCount = list.Count;
+                currentPostPage = GetPostsForPage(list, page);
+            }
+
+            if (totalPostCount != 0)
+            {
+                return View(new PostsDisplay()
+                {
+
+                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    SearchString = name
+
+                });
+            }
+
+            return View(new PostsDisplay()
+            {
+                ErrorMessage = "Sorry nothing was found by this name",
+                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                PostsToDisplay = currentPostPage,
+                SearchString = name
+            });
+
         }
 
         public string AddImage(HttpPostedFileBase image)
