@@ -12,12 +12,15 @@
         closeOnConfirm: false 
     }, function(){
         //this gets executed if user hits `Yes`
+
+        var antiForgeryToken = $("#anti-forgery-form input");
+        var antiForgeryInput = $("<input type='hidden'>").attr("name", antiForgeryToken.attr("name")).val(antiForgeryToken.val());
+
         $("<form>")
          .attr("method", "post")
          .attr("action", $this.attr("href"))
+         .append(antiForgeryInput)
          .appendTo(document.body)
          .submit();
     });
-
-   
 });
