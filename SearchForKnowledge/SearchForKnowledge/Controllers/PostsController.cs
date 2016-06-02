@@ -92,7 +92,7 @@ namespace SearchForKnowledge.Controllers
         }
 
 
-        public ActionResult Category(Post.CategoryName category, int page = 1)
+        public ActionResult CategoryPosts(Post.CategoryName category, int page = 1)
         {
             PostDb db = new PostDb();
 

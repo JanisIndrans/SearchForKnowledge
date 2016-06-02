@@ -15,7 +15,7 @@
                     }
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@x">@post.BookTitle</a>
 
-                    <a href="@Url.Action("Category", "Posts", new {page = 1, category = post.CategoryId})" class="pull-right" >@post.CategoryId</a>
+                    <a href="@Url.Action("CategoryPosts", "Posts", new {page = 1, category = post.CategoryId})" class="pull-right" >@post.CategoryId</a>
                 </h4>
             </div>
             @if (x == 0)

@@ -219,7 +219,7 @@
     <Content Include="Views\Users\WelcomePage.cshtml" />
     <Content Include="Views\Shared\_DisplayPosts.cshtml" />
     <Content Include="Views\Posts\SearchPosts.cshtml" />
-    <Content Include="Views\Posts\Category.cshtml" />
+    <Content Include="Views\Posts\CategoryPosts.cshtml" />
     <Content Include="Views\Posts\UserPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
