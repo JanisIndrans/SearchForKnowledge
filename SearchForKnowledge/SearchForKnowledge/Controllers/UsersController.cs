@@ -53,14 +53,15 @@ namespace SearchForKnowledge.Controllers
         public ActionResult Login(UsersLogin form)
         {
             UserDb db = new UserDb();
+            User user = db.GetUserByUsername(form.Username);
 
             if (!form.Username.IsEmpty())
             {
-                if (db.GetUserByUsername(form.Username) != null)
+                if (user != null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(form.Password, db.GetUserByUsername(form.Username).Password))
                     {
-                        Session["username"] = form.Username;
+                        Session["username"] = user.Username;
                         return RedirectToRoute("Home");
                     }
                 }
