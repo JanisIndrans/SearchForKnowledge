@@ -18,65 +18,68 @@ namespace SearchForKnowledge.Controllers
     public class PostsController : Controller
     {
 
-        private const int  PostsPerPage = 14;
+        private const int PostsPerPage = 14;
 
+
+//-----------------------Start of Controllers for displaying posts in various search ways and by categories----------------------------//
         public ActionResult Index(int page = 1)
         {
+
             PostDb db = new PostDb();
-            List<Post> posts = db.GetAllPosts();
-            var totalPostCount = posts.Count;
-            var currentPostPage = GetPostsForPage(posts, page);
-
-
-            return View(new PostsDisplay
+            
+            List<Post> currentPostPage = db.GetAllPostsForPage(page, PostsPerPage);
+            int numberOfPosts = db.NumberOfAllPosts();
+            if (numberOfPosts != 0)
             {
-                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
-                PostsToDisplay = currentPostPage
+                
+                return View(new PostsDisplay
+                {
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage
 
-            });
+                });
+            }
+
+            else
+            {
+                return View(new PostsDisplay
+                {
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    ErrorMessage = "Sorry, there are no posts at the moment!"
+
+                });
+            }
         }
-
-        public List<Post> GetPostsForPage(List<Post> posts, int page)
-        {
-            return posts.OrderByDescending(d => d.CreationDate)
-               .Skip((page - 1) * PostsPerPage)
-               .Take(PostsPerPage)
-               .ToList();
-        }
-
 
         public ActionResult SearchPosts(string searchString = "", int page = 1)
         {
             PostDb db = new PostDb();
 
-            int totalPostCount = 0;
-            var currentPostPage = new List<Post>();
-            var searchList = db.GetSearchResult(searchString);
+            List<Post> currentPostPage = db.GetPostsForSearchPage(searchString, page, PostsPerPage);
+            int numberOfPosts = db.NumberOfSearchedPosts(searchString);
 
-            if (searchList != null)
+            if (numberOfPosts != 0)
             {
-                totalPostCount = searchList.Count;
-                currentPostPage = GetPostsForPage(searchList, page);
-            }
-
-            if (totalPostCount != 0)
-            {
+                
                 return View(new PostsDisplay
                 {
 
-                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
                     PostsToDisplay = currentPostPage,
                     SearchString = searchString
 
                 });
             }
-
-            return View(new PostsDisplay
+            else
             {
-                ErrorMessage = "Sorry nothing was found with this title",
-                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
-                PostsToDisplay = currentPostPage
-            });
+                return View(new PostsDisplay
+                {
+                    ErrorMessage = "Sorry nothing was found with this title",
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage
+                });
+            }           
         }
 
         public ActionResult CreatePost()
@@ -88,6 +91,71 @@ namespace SearchForKnowledge.Controllers
             });
         }
 
+
+        public ActionResult Category(Post.CategoryName category, int page = 1)
+        {
+            PostDb db = new PostDb();
+
+            var currentPostPage = db.GetPostsForCategoryPage(category, page, PostsPerPage);
+            int numberOfPosts = db.NumberOfCategoryPosts(category);
+
+            if (numberOfPosts != 0)
+            {
+
+
+                return View(new PostsCategory
+                {
+
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    NameOfCategory = category
+
+                });
+            }
+            else
+            {
+                return View(new PostsCategory
+                {
+                    ErrorMessage = "Sorry nothing was found in this Category",
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+
+                });
+            }           
+        }
+
+
+        public ActionResult UserPosts(string name, int page = 1)
+        {
+            PostDb db = new PostDb();
+
+            var currentPostPage = db.GetPostsForUsersPage(name, page, PostsPerPage);
+            int numberOfPosts = db.NumberOfUsersPosts(name);
+
+
+            if (numberOfPosts != 0)
+            {
+                return View(new PostsDisplay()
+                {
+
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage,
+                    SearchString = name
+
+                });
+            }
+            else
+            {
+                return View(new PostsDisplay()
+                {
+                    ErrorMessage = "Sorry nothing was found by this name",
+                    Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
+                    PostsToDisplay = currentPostPage
+                });
+            }
+        }
+
+//-----------------------End of Controllers for displaying posts in various search ways and by categories----------------------------//
 
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult CreatePost(PostsNew form)
@@ -112,86 +180,16 @@ namespace SearchForKnowledge.Controllers
                 Username = Session["userName"].ToString(),
                 CategoryId = form.CategoryId,
                 Description = form.Description,
-                CreationDate = DateTime.Now                
+                CreationDate = DateTime.Now
             };
-               
+
             db.CreatePost(post);
-            
+
             return RedirectToRoute("Home");
         }
 
 
-        public ActionResult Category(Post.CategoryName category, int page = 1)
-        {
-            PostDb db = new PostDb();
-
-            int totalPostCount = 0;
-            var currentPostPage = new List<Post>();
-            var list = db.GetPostsByCategory(category);
-
-            if (list != null)
-            {
-                totalPostCount = list.Count;
-                currentPostPage = GetPostsForPage(list, page);
-            }
-
-            if (totalPostCount != 0)
-            {
-                return View(new PostsCategory
-                {
-
-                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
-                    PostsToDisplay = currentPostPage,
-                    NameOfCategory = category
-
-                });
-            }
-
-            return View(new PostsCategory
-            {
-                ErrorMessage = "Sorry nothing was found in this Category",
-                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
-                PostsToDisplay = currentPostPage,
-                NameOfCategory = category
-            });
-            
-        }
-
-        public ActionResult UserPosts(string name, int page = 1)
-        {
-            PostDb db = new PostDb();
-
-            int totalPostCount = 0;
-            var currentPostPage = new List<Post>();
-            var list = db.GetAllUsersPosts(name);
-
-            if (list != null)
-            {
-                totalPostCount = list.Count;
-                currentPostPage = GetPostsForPage(list, page);
-            }
-
-            if (totalPostCount != 0)
-            {
-                return View(new PostsDisplay()
-                {
-
-                    Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
-                    PostsToDisplay = currentPostPage,
-                    SearchString = name
-
-                });
-            }
-
-            return View(new PostsDisplay()
-            {
-                ErrorMessage = "Sorry nothing was found by this name",
-                Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage),
-                PostsToDisplay = currentPostPage,
-                SearchString = name
-            });
-
-        }
+    
 
         public string AddImage(HttpPostedFileBase image)
         {
@@ -221,6 +219,6 @@ namespace SearchForKnowledge.Controllers
             return uriBuilder.ToString();
         }
 
-        }
-
     }
+
+}
