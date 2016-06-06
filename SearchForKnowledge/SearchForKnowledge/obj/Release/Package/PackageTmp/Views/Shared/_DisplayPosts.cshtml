@@ -1,0 +1,79 @@
+﻿@using SearchForKnowledge.Models
+@using SearchForKnowledge.ViewModels
+@model System.Collections.Generic.List<SearchForKnowledge.Models.Post>
+
+<div class="panel-group accordion" id="accordion">
+
+    @for (int x = 0; x < Model.Count; x++)
+    {
+
+        <div class="panel panel-default">
+            <div class="panel-heading accordion">
+                <h4 class="panel-title">
+                    @{
+                        var post = Model.ElementAt(x);
+                    }
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@x">@post.BookTitle</a>
+
+                    <a href="@Url.Action("CategoryPosts", "Posts", new {page = 1, category = post.CategoryId})" class="pull-right" >@post.CategoryId</a>
+                </h4>
+            </div>
+            @if (x == 0)
+            {
+                <div id="collapse_@x" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div id="contentPicture">
+                            <div id="Zoom">
+                                <img class="img-responsive" src="@post.PicturePath" />
+                            </div>
+                        </div>
+                        <div class="panel pre-scrollable" id="contentDescription">
+                            <div>
+                                <div id="postDescription">Description:</div>
+                                <div id="postContainer">
+                                    <div id="description"> @post.Description </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="contentFooter">
+                            @*<a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> 7</a> |
+                            <a href="#"><i class="glyphicon glyphicon-thumbs-down"></i> 3</a> |
+                            <a href="#">Comments: 0</a> |*@
+                            Created by<a href="@Url.Action("UserPosts", "Posts", new{page=1,name=post.Username})" style="color: red;"> @post.Username</a> | Date: @post.CreationDate
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div id="collapse_@x" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div id="contentPicture">
+                            <div id="Zoom">
+                                <img class="img-responsive" src="@post.PicturePath" />
+                            </div>
+                        </div>
+
+                        <div class="panel pre-scrollable" id="contentDescription">
+                            <div>
+                                <div id="postDescription">Description:</div>
+                                <div id="postContainer">
+                                    <div id="description"> @post.Description </div>                               
+                                </div>
+                            </div>
+                        </div>
+                        <div id="contentFooter">
+                            @*<a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> 7</a> |
+                            <a href="#"><i class="glyphicon glyphicon-thumbs-down"></i> 3</a> |
+                            <a href="#">Comments: 0</a> |*@ 
+                            Created by<a href="@Url.Action("UserPosts", "Posts", new{page=1,name=post.Username})" style="color: red;"> @post.Username</a> | Date: @post.CreationDate
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    }
+
+</div>
+

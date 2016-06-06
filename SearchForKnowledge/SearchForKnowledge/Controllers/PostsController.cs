@@ -75,9 +75,10 @@ namespace SearchForKnowledge.Controllers
             {
                 return View(new PostsDisplay
                 {
-                    ErrorMessage = "Sorry nothing was found with this title",
+                    ErrorMessage = "Sorry nothing was found with this title: ",
                     Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
-                    PostsToDisplay = currentPostPage
+                    PostsToDisplay = currentPostPage,
+                    SearchString = searchString
                 });
             }           
         }
@@ -119,6 +120,7 @@ namespace SearchForKnowledge.Controllers
                     ErrorMessage = "Sorry nothing was found in this Category",
                     Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
                     PostsToDisplay = currentPostPage,
+                    NameOfCategory = category
 
                 });
             }           
@@ -150,7 +152,8 @@ namespace SearchForKnowledge.Controllers
                 {
                     ErrorMessage = "Sorry nothing was found by this name",
                     Posts = new PagedData<Post>(currentPostPage, numberOfPosts, page, PostsPerPage),
-                    PostsToDisplay = currentPostPage
+                    PostsToDisplay = currentPostPage,
+                    SearchString = name
                 });
             }
         }

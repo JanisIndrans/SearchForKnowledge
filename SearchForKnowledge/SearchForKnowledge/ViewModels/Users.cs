@@ -24,7 +24,7 @@ namespace SearchForKnowledge.ViewModels
         [StringLength(255, MinimumLength = 8)]
         [Required]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*(_|[^\w])).+$", ErrorMessage =
-            "Password must contain both lower and upper case letters and a nummeric digit! Password " +
+            "Password must contain both lower and upper case letters and a numeric digit! Password " +
             "must not contain non-alphanumeric letters!")]
         public string Password { get; set; }
 
@@ -33,7 +33,7 @@ namespace SearchForKnowledge.ViewModels
         [StringLength(255, MinimumLength = 8)]
         [Required, Display(Name="Confirm password")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*(_|[^\w])).+$", ErrorMessage =
-            "Password must contain both lower and upper case letters and a nummeric digit! Password " +
+            "Password must contain both lower and upper case letters and a numeric digit! Password " +
             "must not contain non-alphanumeric letters!")]
         public string ConfirmPassword { get; set; }
 

@@ -1,0 +1,385 @@
+﻿
+body {
+	margin: 0;
+	padding: 0;
+	text-align: justify;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+
+#header {
+	width: 900px;
+	height: 60px;
+	margin: 0 auto;
+}
+#menu {
+	width: 950px;
+	height: 70px;
+	margin: 0 auto;
+	background: rgba(25, 25, 25, 0.83);
+    border-radius: 10px;
+}
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+	text-transform: uppercase;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	padding: 18px 30px 0 30px;
+	text-decoration: none;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+#menu a:hover {
+     color: #336699;
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
+}
+#search {
+
+    float: right;
+	width: 200px;
+	height: 28px;
+    padding-top: 18px;
+}
+
+#logo{
+    height: 88px;
+	padding: 20px 90px 0 0;
+	float: left;
+    display:compact;
+}
+#greeting {
+    width: 900px;
+	height: 30px;
+    font-size: 20px;
+    margin: 0 auto;
+    color: blue;
+}
+
+.panel-heading {
+    background: #b0b0b0;
+
+}
+
+.panel-title {
+    color: #ffeeee;
+    font-size: 20px;
+    background: #777;
+
+}
+
+.panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 4px;
+    background-color: #4d4d4d;
+}
+
+.panel-body {
+    background-color: transparent;
+}
+.panel {
+    background-color: transparent;
+    color:white;
+    border: 0;
+}
+
+#text {
+    word-break: break-all; 
+    word-wrap: break-word;
+}
+#content {
+	float: right;
+	width: 640px;
+}
+#page {
+	width: 890px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+#sidebar {
+	float: left;
+	width: 245px;
+    height: 1000px;
+    background: rgba(25, 25, 25, 0.81);
+    padding-right: 5px;
+    color: white;
+    border-radius: 10px;
+    font-weight:bold;
+
+}
+#sidebarContent {
+    /*padding: 20px;
+    text-align: left;*/
+    font-size: 25px;
+    font-weight:bold;
+
+}
+#sidebarContent button {
+    border-radius: 5px;
+    /*color: white;
+    padding: 15px 32px;*/
+    text-align: center;
+    width: 99%;
+    margin: 4px;
+    position: relative;
+    /*text-decoration: none;
+    display: table-cell;
+    font-size: 17px;
+    margin: 2px 2px;
+    cursor: pointer;*/
+}
+#sidebarContent a:hover {
+    color: #336699;
+    border-bottom: double;
+    border-left: double;
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
+}
+#footer {
+    clear:both;
+    text-align:center;
+    padding:5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #191919;
+}
+
+#hyperlinkColorWhite {
+    color: white;
+    text-decoration: none;
+}
+
+#contentPicture {
+    background-color:#eeeeee;
+    height: 130px;
+    width:100px;
+    float:left;
+    padding:3px;
+    margin-bottom: 20px;
+}
+#contentPicture img {
+    max-height: 125px;
+    max-width: 95px;
+}
+
+
+#contentDescription {
+    height: 130px;
+    padding:3px;
+    word-break: break-all; 
+    word-wrap: break-word;
+    background-color: transparent;
+}
+
+#contentFooter {
+    background: #000000 url(images/sidebarNew.png) repeat top left;
+    clear:both;
+    text-align:center;
+    padding:5px;
+    color: white;	 	 
+}
+
+#contentFooter a{
+    text-decoration: none;
+    color: white;	 	 
+}
+
+
+#hyperlinkColorWhite:hover {
+    color: #a73737;
+}
+
+#searchColour {
+    background: #191919;
+    border: 0;
+}
+
+#adminPagePanel .panel-heading {
+    color: white;
+    text-align: center;
+}
+
+/*--------------------Validator-------------------------*/
+
+.field-validation-error {
+    color: red;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid red;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: red;
+}
+/*--------------------Validator-------------------------*/
+
+
+/*--------------------About picture-------------------------*/
+#center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*--------------------About picture-------------------------*/
+/*--------------------Zoom picture-------------------------*/
+.overlay{
+ 	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000000;	
+	z-index: 1;
+}
+#ZoomImageLarge {
+	display: none;
+	position: absolute;		
+	background: #FFFFFF;	
+	padding: 5px;
+	z-index: 10;
+    min-width: 60px;
+    min-height: 60px;
+	color: #336699;
+}
+#ZoomImageLarge img {
+    border: none;
+    width: auto;
+    max-height: 800px;
+    max-width: 600px;
+}
+/*--------------------Zoom picture-------------------------*/
+.navFont {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 20px;
+    border-bottom:groove;
+}
+
+.navFont:hover {
+     color: #336699;
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
+}
+
+.accordion {
+    background-color: black;
+    border-radius:10px;
+}
+
+#recent {
+    background-color: rgba(25, 25, 25, 0.68);
+    height: 40px;
+    display:compact;
+    padding:0px;
+    margin: 0px;
+    margin-bottom: 8px;
+    text-align: start;
+    font-family: Verdana;
+    font-size: 30px;
+    text-align:center;
+    color: white;
+    background-color: none;
+    border-radius:4px;
+}
+.registerPanel {
+    margin-top:15px;
+    margin-left:10px;
+    background-color: #b0b0b0;
+    color: black;
+    font-family:Verdana;
+    font-size:20px;
+    font-style:italic;
+}
+.myBtn {
+    background-color:#336699;
+    border-color: white;
+    margin-left:10px;
+}
+    .myBtn:hover {
+        background-color: #93b9de;
+    }
+.forText {
+    color:black;
+    display:inline;
+}
+.input {
+    font-family:Verdana;
+    font-size: 20px;
+    color: black;
+    display:inline;
+    border-radius:4px;
+}
+.name {
+    font-weight:bold;
+    display:inline;
+}
+#postDescription {
+    margin-left: 10px;
+    font-size: 20px;
+    color:#4493e1;
+    font-weight:bold;
+}
+#postContainer {
+    background-color: #808080;
+    margin-top:5px;
+    margin-left: 20px;
+    min-height:100px;
+    width: 80%;
+    
+}
+#description {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.panelItems {
+    margin-left:10px;
+    font-size:20px;
+}
+
+.panelInput {
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom: 5px;
+    font-size:20px;
+}
+
+#About {
+    margin-top:5px;
+    margin-left: 50px;
+    resize:horizontal;
+    margin-bottom:5px;
+    width: 500px;
+}
+
+#dropDownCategory {
+    font-style:normal;
+    font-size: 15px;
+}

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="s4k" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Janix\\Desktop\\Project\ 4th\ semester\\SearchForKnowledge\\SearchForKnowledge\\SearchForKnowledge\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Janix\\Desktop\\Project\ 4th\ semester\\SearchForKnowledge\\SearchForKnowledge\\SearchForKnowledge\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>
