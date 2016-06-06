@@ -1,0 +1,59 @@
+﻿@model SearchForKnowledge.ViewModels.PostsNew
+@{
+    ViewBag.Title = "CreatePost";
+}
+
+@using (Html.BeginForm("CreatePost", "Posts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="panel panel-default registerPanel">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h2>Create your post</h2>
+            </div>
+        </div>
+        <div class="panel-body">
+            @Html.ValidationSummary()
+            <div class="form-group-lg">
+                <div class="panelInput">
+                    @Html.TextBoxFor(u => u.BookTitle, new {@class = "form-control", placeholder = "Book title"})
+                </div>
+
+            </div>
+
+            <div class="form-group-lg">
+
+                <div class="panelInput">
+                    @Html.TextBoxFor(u => u.Author, new {@class = "form-control", placeholder = "Author of the book"})
+                </div>
+            </div>
+            <div class="form-group-lg">
+
+                <div class="panelInput" id="dropDownCategory">
+                    @Html.DropDownList("CategoryId", new SelectList(Enum.GetValues(typeof (SearchForKnowledge.Models.Post.CategoryName))), "Select category", new {@class = "form-control"})
+                    @* @Html.DropDownListFor(u => u.CategoryId, new SelectList(Enum.GetValues(typeof(SearchForKnowledge.Models.Post.CategoryName)), "Select category", new { @class = "form-control"}))*@
+                </div>
+            </div>
+            <div class="form-group-lg" id="test5">
+
+                <div class="panelInput" id="descriptionTxt">
+                    @Html.TextAreaFor(u => u.Description, new {@class = "form-control", placeholder = "Description"})
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="panelItems">Select book cover!</div>
+                <div class="panelItems">
+                    @Html.TextBoxFor(u => u.ImgFile, new {type = "file"})</div>
+            </div>
+            <br/>
+
+            <input type="submit" value="Create!" class="btn btn-primary myBtn"/>
+            <a href="@Url.RouteUrl("Home")">
+                <div class="forText">or cancel</div></a>
+        </div>
+    </div>
+    
+            }

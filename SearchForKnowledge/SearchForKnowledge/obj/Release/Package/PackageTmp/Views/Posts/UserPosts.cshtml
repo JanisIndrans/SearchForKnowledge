@@ -1,15 +1,13 @@
-﻿@using SearchForKnowledge.ViewModels
-@model SearchForKnowledge.ViewModels.PostsCategory
+﻿@model SearchForKnowledge.ViewModels.PostsDisplay
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "UserPosts";
 }
-                   
 
 <div>
     <h2 id="recent">
-        @Model.NameOfCategory
+        @Model.SearchString's Posts
     </h2>
-   
+
     <div id="error">
         @Model.ErrorMessage
     </div>
@@ -19,7 +17,7 @@
 
         @if (Model.Posts.HasPreviousPage)
         {
-            <a href="@Url.Action("Category", new {page = Model.Posts.PreviousPage, category = Model.NameOfCategory})" class="btn btn-primary btn-sm">
+            <a href="@Url.Action("UserPosts", new {page = Model.Posts.PreviousPage, name = Model.SearchString})" class="btn btn-primary btn-sm">
                 <i class="glyphicon glyphicon-chevron-left"></i>Previous Page
             </a>
         }
@@ -31,7 +29,7 @@
         }
         @if (Model.Posts.HasNextPage)
         {
-            <a href="@Url.Action("Category", new { page = Model.Posts.NextPage, category = Model.NameOfCategory })" class="btn btn-primary btn-sm">
+            <a href="@Url.Action("UserPosts", new { page = Model.Posts.NextPage, name = Model.SearchString })" class="btn btn-primary btn-sm">
                 Next Page<i class="glyphicon glyphicon-chevron-right"></i>
             </a>
         }

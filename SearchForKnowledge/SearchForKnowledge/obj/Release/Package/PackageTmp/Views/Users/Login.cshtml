@@ -1,0 +1,39 @@
+﻿@model SearchForKnowledge.ViewModels.UsersLogin
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="panel panel-default registerPanel">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h2>Login</h2>
+            </div>
+        </div>
+        <div class="panel-body">
+            @Html.ValidationSummary()
+            <div id="ErrorMessage">
+                @Model.ErrorMessage
+            </div>
+            <div class="form-group-lg">
+                <div class="panelInput">
+                    @Html.TextBoxFor(u => u.Username, new {@class = "form-control, input, loginInfo", placeholder="Username"})
+                    </div>
+                </div>
+            <br/>
+
+            <div class="form-group-lg">
+
+                <div class="panelInput">
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control, input, loginInfo", placeholder = "Password" })</div>
+            </div>
+            <br/>
+            <input type="submit" value="Login" class="btn btn-primary myBtn"/>
+            <a href="@Url.RouteUrl("Home")"><div class="forText">or cancel</div></a>
+        </div>
+    </div>
+        }

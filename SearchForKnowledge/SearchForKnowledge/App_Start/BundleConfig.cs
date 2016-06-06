@@ -12,18 +12,18 @@ namespace SearchForKnowledge
                 .Include("~/content/styles/sweetalert.css"));
 
 
-            bundles.Add(new ScriptBundle("~/scripts")
-                .Include("~/scripts/jquery-2.2.2.js")
-                .Include("~/scripts/jquery.validate.js")
-                .Include("~/scripts/jquery.validate.unobtrusive.js")
-                .Include("~/scripts/bootstrap.js")
-                .Include("~/scripts/Logout.js")
-                .Include("~/scripts/bootstrap.min.js")
-                .Include("~/scripts/jquery-2.2.2.min.js")
-                .Include("~/scripts/jquery-2.2.3.min.js")
-                .Include("~/scripts/ImgZoom.js")
-                .Include("~/scripts/sweetalert.min.js")
-                .Include("~/scripts/Search.js"));
+            bundles.Add(new ScriptBundle("~/SkriptsS4k")
+                .Include("~/skriptss4k/jquery-2.2.2.js")
+                .Include("~/skriptss4k/jquery.validate.js")
+                .Include("~/skriptss4k/jquery.validate.unobtrusive.js")
+                .Include("~/skriptss4k/bootstrap.js")
+                .Include("~/skriptss4k/Logout.js")
+                .Include("~/skriptss4k/bootstrap.min.js")
+                .Include("~/skriptss4k/jquery-2.2.2.min.js")
+                .Include("~/skriptss4k/jquery-2.2.3.min.js")
+                .Include("~/skriptss4k/ImgZoom.js")
+                .Include("~/skriptss4k/sweetalert.min.js")
+                .Include("~/skriptss4k/Search.js"));
         }
     }
 }

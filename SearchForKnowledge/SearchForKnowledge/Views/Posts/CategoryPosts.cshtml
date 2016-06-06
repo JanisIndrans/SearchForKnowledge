@@ -1,0 +1,46 @@
+﻿@using SearchForKnowledge.ViewModels
+@model SearchForKnowledge.ViewModels.PostsCategory
+@{
+    ViewBag.Title = "Category";
+}
+                   
+
+<div>
+    <h2 id="recent">
+        @Model.NameOfCategory
+    </h2>
+   
+    <div id="error">
+        @Model.ErrorMessage
+    </div>
+    @Html.Partial("_DisplayPosts", Model.PostsToDisplay)
+    <br />
+    <div class="btn-group pull-right">
+
+        @if (Model.Posts.HasPreviousPage)
+        {
+            <a href="@Url.Action("CategoryPosts", new {page = Model.Posts.PreviousPage, category = Model.NameOfCategory})" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>Previous Page
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-default btn-disabled btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>Previous Page
+            </a>
+        }
+        @if (Model.Posts.HasNextPage)
+        {
+            <a href="@Url.Action("CategoryPosts", new { page = Model.Posts.NextPage, category = Model.NameOfCategory })" class="btn btn-primary btn-sm">
+                Next Page<i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-default btn-disabled btn-sm">
+                Next Page<i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+
+    </div>
+</div>
